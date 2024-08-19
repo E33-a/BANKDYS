@@ -8,6 +8,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import Bank.Card.CardCredit;
+import Bank.Card.CardDebit;
+import Bank.Card.CardPayroll;
+import Bank.Credit.CreditC;
+import Bank.Customer.CustomerCredit;
+import Bank.Customer.CustomerDebit;
+import Bank.Customer.CustomerPayroll;
+import Structures.DoubleListCr;
+import Structures.DoubleListDe;
+import Structures.DoubleListPay;
+import Structures.NodeCr;
+import Structures.NodeDe;
+import Structures.NodePay;
 
 public class ListCust implements Files{
     public static DoubleListPay listPayroll = new DoubleListPay();

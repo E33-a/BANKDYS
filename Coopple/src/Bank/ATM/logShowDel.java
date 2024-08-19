@@ -1,6 +1,11 @@
-package Bank;
+package Bank.ATM;
 
 import javax.swing.JOptionPane;
+
+import Bank.ListFInal.ListFinal;
+import Structures.NodeCr;
+import Structures.NodeDe;
+import Structures.NodePay;
 
 public class logShowDel {
     public static void typeLoggin(String cardNumber){

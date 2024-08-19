@@ -1,4 +1,4 @@
-package Bank;
+package Bank.Interface;
 
 public interface Discountt {
     void setDiscount(double discount);

@@ -2,6 +2,8 @@ package Bank;
 
 import javax.swing.JOptionPane;
 
+import Bank.ATM.ATM;
+import Bank.ATM.logShowDel;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

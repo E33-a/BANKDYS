@@ -1,4 +1,4 @@
-package Bank;
+package Bank.Card;
 
 import java.util.concurrent.ThreadLocalRandom;
 

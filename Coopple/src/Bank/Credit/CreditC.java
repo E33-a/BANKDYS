@@ -1,4 +1,4 @@
-package Bank;
+package Bank.Credit;
 
 public class CreditC extends Credit {
     protected int fees;

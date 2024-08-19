@@ -1,7 +1,12 @@
-package Bank;
+package Bank.ATM;
 
 import javax.swing.JOptionPane;
 
+import Bank.Customer.CustomerCredit;
+import Bank.Customer.CustomerDebit;
+import Bank.Customer.CustomerPayroll;
+import Bank.ListFInal.ListFinal;
+import Structures.*;
 
 public class ATM {
     private static double moneyT; // Variable estática para el dinero total del ATM
@@ -149,12 +154,13 @@ public class ATM {
                                              [1] Consultar saldo
                                              [2] Depositar
                                              [3] Retirar
+                                             [4] Cambiar NIP
                                              [0] Salir\n
                                             """));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
-            } while (opc < 0 || opc > 3);
+            } while (opc < 0 || opc > 4);
 
             switch(opc) {
                 case 1 -> {
@@ -168,6 +174,9 @@ public class ATM {
                 case 3 -> {
                     OpAtm.withdrawMoney(customerP); // Retirar dinero
                     break;
+                }
+                case 4 -> {
+                    OpAtm.changeNIP(customerP);
                 }
                 case 0 -> {
                     return;
@@ -183,20 +192,21 @@ public class ATM {
 
         do{
             opc = -1;
-            do{
+             do{
                 try{
                     opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                DEPOSITO A:
-                                                Elige una opcion:
-                                                [1] Consultar saldo
-                                                [2] Depositar
-                                                [3] Retirar
-                                                [4] Salir\n
-                                                """));
+                                            DEPOSITO A:
+                                            Elige una opcion:
+                                             [1] Consultar saldo
+                                             [2] Depositar
+                                             [3] Retirar
+                                             [4] Cambiar NIP
+                                             [0] Salir\n
+                                            """));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
-            } while (opc < 0 || opc > 3);
+            } while (opc < 0 || opc > 4);
 
             switch(opc) {
                 case 1 -> {
@@ -210,6 +220,9 @@ public class ATM {
                 case 3 -> {
                     OpAtm.withdrawMoney(customerD); // Retirar dinero
                     break;
+                }
+                case 4 -> {
+                    OpAtm.changeNIP(customerD);
                 }
                 case 0 -> {
                     return;
@@ -228,17 +241,18 @@ public class ATM {
             do{
                 try{
                     opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                DEPOSITO A:
-                                                Elige una opcion:
-                                                [1] Consultar credito
-                                                [2] Depositar
-                                                [3] Retirar
-                                                [0] Salir\n
-                                                """));
+                                            DEPOSITO A:
+                                            Elige una opcion:
+                                             [1] Consultar saldo
+                                             [2] Depositar
+                                             [3] Retirar
+                                             [4] Cambiar NIP
+                                             [0] Salir\n
+                                            """));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
-            } while (opc < 0 || opc > 3);
+            } while (opc < 0 || opc > 4);
 
             switch(opc) {
                 case 1 -> {
@@ -252,6 +266,9 @@ public class ATM {
                 case 3 -> {
                     OpAtm.withdrawMoney(customerC); // Retirar dinero
                     break;
+                }
+                case 4 -> {
+                    OpAtm.changeNIP(customerC);
                 }
                 case 0 -> {
                     return;

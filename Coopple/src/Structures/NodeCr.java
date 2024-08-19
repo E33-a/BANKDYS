@@ -1,4 +1,6 @@
-package Bank;
+package Structures;
+
+import Bank.Customer.CustomerCredit;
 
 public class NodeCr {
     public CustomerCredit cus;

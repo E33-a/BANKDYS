@@ -1,4 +1,7 @@
-package Bank;
+package Bank.Customer;
+
+import Bank.Card.CardCredit;
+import Bank.Credit.CreditC;
 
 public class CustomerCredit extends Customer{
     private CardCredit Card;

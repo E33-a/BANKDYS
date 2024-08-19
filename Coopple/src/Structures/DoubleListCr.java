@@ -1,7 +1,8 @@
-package Bank;
+package Structures;
 
 import javax.swing.JOptionPane;
 
+import Bank.Customer.CustomerCredit;
 
 public class DoubleListCr {
     private NodeCr head; //primer nodo
@@ -11,7 +12,6 @@ public class DoubleListCr {
         this.head = null;
         this.tail = null;
     }
-
     public boolean isEmpty() { //comprobar si la lista esta vacia
         return head == null; //comprobacion en return
     }
@@ -143,4 +143,42 @@ public class DoubleListCr {
         //Si no se encuentra el cliente
         return false;
     }  
+
+    //sort
+     private NodeCr partition(NodeCr low, NodeCr high) {
+        String pivot = high.cus.getCard().getNumber(); // Selecciona el número de tarjeta del nodo final como pivote
+        NodeCr i = low.prev; // Puntero para el nodo más pequeño
+
+        for (NodeCr j = low; j != high; j = j.next) {
+            // Si el número de tarjeta del nodo actual es menor o igual que el pivote
+            if (j.cus.getCard().getNumber().compareTo(pivot) <= 0) {
+                i = (i == null) ? low : i.next; // Incrementa el puntero de i
+                swap(i, j); // Intercambia los nodos i y j
+            }
+        }
+        i = (i == null) ? low : i.next; // Mueve i a la siguiente posición
+        swap(i, high); // Intercambia el nodo i con el pivote
+        return i; // Devuelve la nueva posición del pivote
+    }
+
+    // Método para intercambiar los datos de dos nodos
+    private void swap(NodeCr a, NodeCr b) {
+        CustomerCredit temp = a.cus;
+        a.cus = b.cus;
+        b.cus = temp;
+    }
+
+    // Método recursivo para aplicar Quick Sort
+    private void quickSort(NodeCr low, NodeCr high) {
+        if (high != null && low != high && low != high.next) {
+            NodeCr pivot = partition(low, high); // Particiona la lista
+            quickSort(low, pivot.prev); // Ordena la sublista izquierda
+            quickSort(pivot.next, high); // Ordena la sublista derecha
+        }
+    }
+
+    // Método público para iniciar el Quick Sort
+    public void sort() {
+        quickSort(head, tail);
+    }
 }

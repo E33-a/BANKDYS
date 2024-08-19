@@ -1,4 +1,4 @@
-package Bank;
+package Bank.Credit;
 
 public abstract class Credit {
     protected double amount;

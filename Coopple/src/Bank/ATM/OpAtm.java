@@ -1,10 +1,13 @@
-package Bank;
+package Bank.ATM;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
+import Bank.Customer.CustomerCredit;
+import Bank.Customer.CustomerDebit;
+import Bank.Customer.CustomerPayroll;
 
 public class OpAtm {
     static LocalDateTime fechaHoy = LocalDateTime.now();
@@ -322,5 +325,87 @@ public class OpAtm {
             JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getCreditBalance());
         }
+
+    }
+
+    public static void changeNIP(CustomerPayroll cus) {
+        String newNIP, confirmNIP, nameCom;
+        nameCom = cus.getName() + " " + cus.getSurname1() + " " + cus.getSurname2();
+
+        do {
+            newNIP = JOptionPane.showInputDialog("CAMBIAR  NIP\n\nHola " + nameCom + "\nIngresa el nuevo nip:\n");
+            newNIP = newNIP.substring(0, 4);//Almacenar solo 4 caracteres
+            if (newNIP != null && newNIP.length() == 4 && newNIP.matches("\\d{4}")) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
+            }
+        } while (true);
+        do {
+            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nConfirmar nuevo NIP:\n");
+            confirmNIP = confirmNIP.substring(0, 4);
+
+            if (newNIP.equals(confirmNIP)) {
+                cus.getCard().setNip(confirmNIP);
+                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
+            }
+        } while (!newNIP.equals(confirmNIP));
+    }
+
+    public static void changeNIP(CustomerDebit cus) {
+        String newNIP, confirmNIP, nameCom;
+        nameCom = cus.getName() + " " + cus.getSurname1() + " " + cus.getSurname2();
+
+        do {
+            newNIP = JOptionPane.showInputDialog("CAMBIAR  NIP\n\nHola " + nameCom + "\nIngresa el nuevo nip:\n");
+            newNIP = newNIP.substring(0, 4);//Almacenar solo 4 caracteres
+            if (newNIP != null && newNIP.length() == 4 && newNIP.matches("\\d{4}")) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
+            }
+        } while (true);
+        do {
+            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nConfirmar nuevo NIP:\n");
+            confirmNIP = confirmNIP.substring(0, 4);
+
+            if (newNIP.equals(confirmNIP)) {
+                cus.getCard().setNip(confirmNIP);
+                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
+            }
+        } while (!newNIP.equals(confirmNIP));
+    }
+
+    public static void changeNIP(CustomerCredit cus) {
+        String newNIP, confirmNIP, nameCom;
+        nameCom = cus.getName() + " " + cus.getSurname1() + " " + cus.getSurname2();
+
+        do {
+            newNIP = JOptionPane.showInputDialog("CAMBIAR  NIP\n\nHola " + nameCom + "\nIngresa el nuevo nip:\n");
+            newNIP = newNIP.substring(0, 4);//Almacenar solo 4 caracteres
+            if (newNIP != null && newNIP.length() == 4 && newNIP.matches("\\d{4}")) {
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
+            }
+        } while (true);
+        do {
+            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nConfirmar nuevo NIP:\n");
+            confirmNIP = confirmNIP.substring(0, 4);
+
+            if (newNIP.equals(confirmNIP)) {
+                cus.getCard().setNip(confirmNIP);
+                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
+            }
+        } while (!newNIP.equals(confirmNIP));
     }
 }
