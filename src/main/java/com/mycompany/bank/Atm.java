@@ -58,7 +58,6 @@ public class Atm implements InterfaceOperations{
             }
         }
     }
-
     // Método para mostrar las opciones disponibles para el cliente
     public static void optionsCus(Customer cus) {
         int opc;
