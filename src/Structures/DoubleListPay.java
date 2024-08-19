@@ -87,7 +87,7 @@ public class DoubleListPay {
         }
         NodePay current = head;
         while (current != null) {
-            current.cus.showInfoC();
+            current.cus.showCPay();
             System.out.println("--------------------------");
             current = current.next;
         }
@@ -101,7 +101,7 @@ public class DoubleListPay {
         }
         NodePay current = tail;
         while (current != null) {
-            current.cus.showInfoC();
+            current.cus.showCPay();
             System.out.println("-----------------------------------");
             current = current.prev;
         }
