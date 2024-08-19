@@ -1,8 +1,6 @@
-package Structures;
-
+package Bank;
 import javax.swing.JOptionPane;
 
-import Bank.Customer.CustomerPayroll;
 
 public class DoubleListPay {
     private NodePay head; //primer nodo

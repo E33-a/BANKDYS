@@ -1,7 +1,5 @@
-package Bank.Customer;
+package Bank;
 
-import Bank.CreditC;
-import Bank.Card.CardDebit;
 
 public class CustomerDebit extends CustomerPayroll{
     private CardDebit Card;

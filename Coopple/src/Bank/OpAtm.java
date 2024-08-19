@@ -1,25 +1,32 @@
-package Bank.ATM;
+package Bank;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
-import Bank.Customer.CustomerCredit;
-import Bank.Customer.CustomerDebit;
-import Bank.Customer.CustomerPayroll;
 
 public class OpAtm {
+    static LocalDateTime fechaHoy = LocalDateTime.now();
+    static DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    static DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+    static String fecha = fechaHoy.format(formatDate);
+    static String time = fechaHoy.format(formatTime);
+                        //private JOptionPane.showMessageDialog(null, "Operacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
         
     // Método para consultar el saldo del cliente // son sobrecargados dependiendo del tipo de cliente y tarjeta
     public static void checkBalance(CustomerPayroll cus) {
         double balance = cus.getCard().getBalance();
-        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance);
+        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
     }
     public static void checkBalance(CustomerCredit cus) {
         double balance = cus.getCard().getCreditBalance();
-        JOptionPane.showMessageDialog(null, "Tu saldo de credito actual es: \n$" + balance);
+        JOptionPane.showMessageDialog(null, "Tu saldo de credito actual es: \n$" + balance + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
     }
     public static void checkBalance(CustomerDebit cus) {
         double balance = cus.getCard().getBalance();
-        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance);
+        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
     }
 
     // Método para depositar dinero en la cuenta del cliente
@@ -60,7 +67,7 @@ public class OpAtm {
                 double balance = cus.getCard().getCreditBalance();
                 balance += moneyDe;
                 cus.getCard().setCreditBalance(balance);
-                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia");
+                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             }
             case 2 -> {
                 do {
@@ -71,7 +78,7 @@ public class OpAtm {
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta);
+                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
                     balance -= moneyDe;
                     cus.getCard().setCreditBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getCreditBalance());
@@ -116,7 +123,7 @@ public class OpAtm {
                 double balance = cus.getCard().getBalance();
                 balance += moneyDe;
                 cus.getCard().setBalance(balance);
-                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia");
+                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             }
             case 2 -> {
                 do {
@@ -127,7 +134,7 @@ public class OpAtm {
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta);
+                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
                     balance -= moneyDe;
                     cus.getCard().setBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
@@ -172,7 +179,7 @@ public class OpAtm {
                 double balance = cus.getCard().getBalance();
                 balance += moneyDe;
                 cus.getCard().setBalance(balance);
-                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia");
+                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             }
             case 2 -> {
                 do {
@@ -183,7 +190,7 @@ public class OpAtm {
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta);
+                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
                     balance -= moneyDe;
                     cus.getCard().setBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
@@ -230,7 +237,7 @@ public class OpAtm {
             atmres -= mWithdraw;
             ATM.setMoneyT(atmres);
             cus.getCard().setBalance(balance);
-            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw);
+            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
         }
     }
@@ -271,7 +278,7 @@ public class OpAtm {
             atmres -= mWithdraw;
             ATM.setMoneyT(atmres);
             cus.getCard().setBalance(balance);
-            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw);
+            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
         }
     }
@@ -312,7 +319,7 @@ public class OpAtm {
             atmres -= mWithdraw;
             ATM.setMoneyT(atmres);
             cus.getCard().setCreditBalance(balance);
-            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw);
+            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getCreditBalance());
         }
     }

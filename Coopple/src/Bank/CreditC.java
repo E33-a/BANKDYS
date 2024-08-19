@@ -4,7 +4,7 @@ public class CreditC extends Credit {
     protected int fees;
     protected String typeCred;
 
-    CreditC(double amount, double interest, int fees, String typeCred){
+    public CreditC(double amount, double interest, int fees, String typeCred){
         super(amount, interest);
         this.fees = fees;
         this.typeCred = typeCred;

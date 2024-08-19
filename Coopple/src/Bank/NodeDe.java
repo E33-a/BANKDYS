@@ -1,6 +1,4 @@
-package Structures;
-
-import Bank.Customer.CustomerDebit;
+package Bank;
 
 public class NodeDe {
     public CustomerDebit cus;

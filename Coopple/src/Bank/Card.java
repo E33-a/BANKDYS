@@ -1,4 +1,4 @@
-package Bank.Card;
+package Bank;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,7 +13,9 @@ public abstract class Card {
     protected String type;
 
     Card(){
-        this.number = initial + Long.toString(numero);
+        do{
+            this.number = initial + Long.toString(numero);
+        } while (this.number.length() != 16);
         this.nip = Long.toString(numeroR1);
     }
     Card(String number, String nip, String type){

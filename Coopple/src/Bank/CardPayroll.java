@@ -1,4 +1,4 @@
-package Bank.Card;
+package Bank;
 
 public class CardPayroll extends Card{
     protected double balance;

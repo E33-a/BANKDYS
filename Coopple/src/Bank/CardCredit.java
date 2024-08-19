@@ -1,6 +1,4 @@
-package Bank.Card;
-
-import Bank.Discountt;
+package Bank;
 
 public class CardCredit extends Card implements Discountt{
     protected double creditBalance;

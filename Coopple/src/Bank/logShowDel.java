@@ -1,11 +1,6 @@
-package Bank.ATM;
+package Bank;
 
 import javax.swing.JOptionPane;
-
-import Bank.ListFinal;
-import Structures.NodeCr;
-import Structures.NodeDe;
-import Structures.NodePay;
 
 public class logShowDel {
     public static void typeLoggin(String cardNumber){
@@ -22,7 +17,7 @@ public class logShowDel {
             ATM.logginCredit(cardNumber);
             return;
         }
-        if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
+        else {//if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
             JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nIntente nuevamente");
         return;
         }

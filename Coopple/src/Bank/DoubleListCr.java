@@ -1,14 +1,13 @@
-package Structures;
+package Bank;
 
 import javax.swing.JOptionPane;
 
-import Bank.Customer.CustomerDebit;
 
-public class DoubleListDe {
-    private NodeDe head; //primer nodo
-    private NodeDe tail; //ultimo nodo
+public class DoubleListCr {
+    private NodeCr head; //primer nodo
+    private NodeCr tail; //ultimo nodo
 
-    public DoubleListDe() { // constructor de lista vacia
+    public DoubleListCr() { // constructor de lista vacia
         this.head = null;
         this.tail = null;
     }
@@ -17,40 +16,40 @@ public class DoubleListDe {
         return head == null; //comprobacion en return
     }
 
-    public NodeDe getHead(){
+    public NodeCr getHead(){
         return head;
     }
-    public NodeDe getTail(){
+    public NodeCr getTail(){
         return tail;
     }
 
-    public void insertBegining(CustomerDebit cus){
-        NodeDe newNodeDe = new NodeDe(cus);
+    public void insertBegining(CustomerCredit cus){
+        NodeCr newNode = new NodeCr(cus);
         if (isEmpty()) {
-            head = newNodeDe;
-            tail = newNodeDe;
+            head = newNode;
+            tail = newNode;
         } else {
-            newNodeDe.next = head;
-            head.prev = newNodeDe;
-            head = newNodeDe;
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
         }
     }
 
-    public void insertEnd(CustomerDebit cus){
-        NodeDe newNodeDe = new NodeDe(cus);
+    public void insertEnd(CustomerCredit cus){
+        NodeCr newNode = new NodeCr(cus);
         if (isEmpty()) {
-            head = newNodeDe;
-            tail = newNodeDe;
+            head = newNode;
+            tail = newNode;
         } else {
-            tail.next = newNodeDe;
-            newNodeDe.prev = tail;
-            tail = newNodeDe;
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
         }
     }
 
     //eliminar nodo dependiendo de un valor
-    public NodeDe deleteNodeDeValue(String cardNumber){
-        NodeDe current = head;
+    public NodeCr deleteNodeCreValue(String cardNumber){
+        NodeCr current = head;
 
         while (current != null) {
             if (cardNumber.equals(current.cus.getCard().getNumber())){
@@ -85,9 +84,9 @@ public class DoubleListDe {
             System.out.println("\nLista vacia");
             return; //si la lista esta vacia finalizamos el metodo
         }
-        NodeDe current = head;
+        NodeCr current = head;
         while (current != null) {
-            current.cus.showCDeb();
+            current.cus.showCCre();
             System.out.println("--------------------------");
             current = current.next;
         }
@@ -99,9 +98,9 @@ public class DoubleListDe {
             System.out.println("\nLista vacia");
             return; //si la lista esta vacia finalizamos el metodo
         }
-        NodeDe current = tail;
+        NodeCr current = tail;
         while (current != null) {
-            current.cus.showCDeb();
+            current.cus.showCCre();
             System.out.println("-----------------------------------");
             current = current.prev;
         }
@@ -113,11 +112,11 @@ public class DoubleListDe {
             System.out.println("\nLista vacia");
             return; //si la lista esta vacia finalizamos el metodo
         }
-        NodeDe current = head;
+        NodeCr current = head;
         while (current != null) {
            if(number.equals(current.cus.getCard().getNumber())){
                 System.out.println("CLIENTE ENCONTRADO\n");
-                current.cus.showCDeb();
+                current.cus.showCCre();
                 System.out.println("-----------------------------------");
                 return;
             } 
@@ -133,7 +132,7 @@ public class DoubleListDe {
             return false; //si la lista esta vacia finalizamos el metodo
         }
 
-        NodeDe current = head;
+        NodeCr current = head;
 
         while (current != null) {
             if(number.equals(current.cus.getCard().getNumber())){
@@ -143,5 +142,5 @@ public class DoubleListDe {
         }
         //Si no se encuentra el cliente
         return false;
-    }       
+    }  
 }

@@ -1,6 +1,5 @@
-package Bank.Customer;
+package Bank;
 
-import Bank.CreditC;
 
 public abstract class Customer extends Person{
     protected double salary;

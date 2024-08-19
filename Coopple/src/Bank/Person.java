@@ -1,4 +1,4 @@
-package Bank.Customer;
+package Bank;
 
 public abstract class Person {
     protected String name;

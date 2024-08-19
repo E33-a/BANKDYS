@@ -1,12 +1,7 @@
-package Bank.ATM;
+package Bank;
 
 import javax.swing.JOptionPane;
 
-import Bank.ListFinal;
-import Bank.Customer.CustomerCredit;
-import Bank.Customer.CustomerDebit;
-import Bank.Customer.CustomerPayroll;
-import Structures.*;
 
 public class ATM {
     private static double moneyT; // Variable estática para el dinero total del ATM
@@ -59,10 +54,10 @@ public class ATM {
                 }
             current = current.next;
             }
-            JOptionPane.showMessageDialog(null, "Número de tarjeta no encontrado");
-        } else {
-            JOptionPane.showMessageDialog(null, "No hay clientes en la lista de nómina");
-        }
+            //JOptionPane.showMessageDialog(null, "Número de tarjeta no encontrado");
+        }// else {
+            //JOptionPane.showMessageDialog(null, "No hay clientes en la lista de nómina");
+        //}
     }
     
     public static void logginCredit(String cardNumber){

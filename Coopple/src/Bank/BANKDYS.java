@@ -2,8 +2,9 @@ package Bank;
 
 import javax.swing.JOptionPane;
 
-import Bank.ATM.ATM;
-import Bank.ATM.logShowDel;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BANKDYS {
     public static void main(String[] args) {
@@ -24,8 +25,7 @@ public class BANKDYS {
                                                         \n [4]  Eliminar cliente (No. tarjeta)
                                                         \n [5]  Asignar dinero al ATM
                                                         \n [6]  ATM - Operaciones
-                                                        \n [7]  
-                                                        \n [8]  
+                                                        \n [7]  Ordenar listas
                                                         \n [0]  Salir
                                                         \n\n\tSeleccione una opción:
                                                         """));
@@ -47,12 +47,13 @@ public class BANKDYS {
                                     JOptionPane.showMessageDialog(null, "El número de tarjeta debe ser numérico y tener exactamente 16 dígitos.");
                                 }
                             } while (true);
-                            logShowDel.showFound(numberT);//buscar e imprimir datos 
+                           
                         } catch (NumberFormatException e) {
                             System.out.println("Error: " + e);
                             JOptionPane.showMessageDialog(null, "Error inesperado al buscar la cuenta\nIntenta nuevamente");
                             continue;
                         }
+                        logShowDel.showFound(numberT);//buscar e imprimir datos 
                         break;
                     case 3:
                         logShowDel.showEveryone();
@@ -67,27 +68,26 @@ public class BANKDYS {
                                     JOptionPane.showMessageDialog(null, "El número de tarjeta debe ser numérico y tener exactamente 16 dígitos.");
                                 }
                             } while (true);
-                            logShowDel.delCustomer(numberT);
                         } catch (Exception a) {
                             System.out.println("Error: " + a);
                             JOptionPane.showMessageDialog(null, "Error inesperado al buscar la cuenta a eliminar\nIntenta nuevamente");
                         }
+                        logShowDel.delCustomer(numberT);
                         break;
                     case 5:
                         try{
                             do{
                                 moneyAtm = Double.parseDouble(JOptionPane.showInputDialog("ASIGNAR DINERO A CAJERO\nMinimo $20000\nMaximo $60000\n\nIngresa cantidad:"));
                             } while (moneyAtm < 20000 || moneyAtm > 60000);
-                            ATM.setMoneyT(moneyAtm);
                         } catch (Exception a) {
                             System.out.println("Error: " + a);
                             JOptionPane.showMessageDialog(null, "Error inesperado al asignar dinero\nIntenta nuevamente");
                         }
+                        ATM.setMoneyT(moneyAtm);
                         String message = "Dinero asignado correctamente al cajero\nCantidad asignada: $" + moneyAtm;
                             JOptionPane.showMessageDialog(null, message);
                             break;
                     case 6:
-
                         try{
                             do {
                                 numberT = JOptionPane.showInputDialog("VALIDAR CUENTA\nIngresa el numero de tarjeta: ");
@@ -99,17 +99,21 @@ public class BANKDYS {
                                     JOptionPane.showMessageDialog(null, "El número de tarjeta debe ser numérico y tener exactamente 16 dígitos.");
                                 }
                             } while (true);
-                            logShowDel.typeLoggin(numberT);//buscar y seleccionar tipo de loggeo
                         } catch (Exception q) {
                             System.out.println("Error: " + q);
                             JOptionPane.showMessageDialog(null, "Error inesperado al buscar la cuenta en ATM\nIntenta nuevamente");
                         }
+                        logShowDel.typeLoggin(numberT);//buscar y seleccionar tipo de loggeo
                         break;
                     case 7:
-                        
-                        break;
-                    case 8:
-                        
+                        //falta implementacion
+                        LocalDateTime fechaHoy = LocalDateTime.now();
+                        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+                        String fecha = fechaHoy.format(formatDate);
+                        String time = fechaHoy.format(formatTime);
+                        JOptionPane.showMessageDialog(null, "Operacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
                         break;
                     case 0:
                         System.out.println("\nSaliendo...");

@@ -1,6 +1,5 @@
-package Bank.Card;
+package Bank;
 
-import Bank.Discountt;
 
 public class CardDebit extends CardPayroll implements Discountt{
     protected double discount;

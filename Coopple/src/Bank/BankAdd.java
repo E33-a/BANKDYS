@@ -2,12 +2,7 @@ package Bank;
 
 import javax.swing.JOptionPane;
 
-import Bank.Card.CardCredit;
-import Bank.Card.CardDebit;
-import Bank.Card.CardPayroll;
-import Bank.Customer.CustomerCredit;
-import Bank.Customer.CustomerDebit;
-import Bank.Customer.CustomerPayroll;
+
 
 public class BankAdd {
     public static void addCustomer(){
