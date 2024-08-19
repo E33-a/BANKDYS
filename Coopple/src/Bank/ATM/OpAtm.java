@@ -29,20 +29,30 @@ public class OpAtm {
         int op;
 
         JOptionPane.showMessageDialog(null, "Puedes ingresar hasta\n$5,000 como máximo\n$100 como mínimo");
+        moneyDe = 0;
         do {
-            moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
-            if (moneyDe < 100 || moneyDe > 5000) {
-                JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+            try{
+                moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
+                if (moneyDe < 100 || moneyDe > 5000) {
+                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el deposito.");
             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
+        op = 0;
         do {
-            op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                    DEPOSITO A:
-                                    Elige una opción:
-                                    [1] Cuenta propia
-                                    [2] Cuenta externa
-                                    """));
+            try{
+                op = Integer.parseInt(JOptionPane.showInputDialog("""
+                                        DEPOSITO A:
+                                        Elige una opción:
+                                        [1] Cuenta propia
+                                        [2] Cuenta externa
+                                        """));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+            }
         } while (op < 1 || op > 2);
 
         switch (op) {
@@ -75,20 +85,30 @@ public class OpAtm {
         int op;
 
         JOptionPane.showMessageDialog(null, "Puedes ingresar hasta\n$5,000 como máximo\n$100 como mínimo");
+        moneyDe = 0;
         do {
-            moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
-            if (moneyDe < 100 || moneyDe > 5000) {
-                JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+            try{
+                moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
+                if (moneyDe < 100 || moneyDe > 5000) {
+                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el deposito.");
             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
+        op = 0;
         do {
-            op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                    DEPOSITO A:
-                                    Elige una opción:
-                                    [1] Cuenta propia
-                                    [2] Cuenta externa
-                                    """));
+            try{
+                op = Integer.parseInt(JOptionPane.showInputDialog("""
+                                        DEPOSITO A:
+                                        Elige una opción:
+                                        [1] Cuenta propia
+                                        [2] Cuenta externa
+                                        """));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+            }
         } while (op < 1 || op > 2);
 
         switch (op) {
@@ -121,20 +141,30 @@ public class OpAtm {
         int op;
 
         JOptionPane.showMessageDialog(null, "Puedes ingresar hasta\n$5,000 como máximo\n$100 como mínimo");
+        moneyDe = 0;
         do {
-            moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
-            if (moneyDe < 100 || moneyDe > 5000) {
-                JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
-            }
+             try{
+                moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
+                if (moneyDe < 100 || moneyDe > 5000) {
+                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+                }
+             } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
+        op = 0;
         do {
-            op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                    DEPOSITO A:
-                                    Elige una opción:
-                                    [1] Cuenta propia
-                                    [2] Cuenta externa
-                                    """));
+            try{
+                op = Integer.parseInt(JOptionPane.showInputDialog("""
+                                        DEPOSITO A:
+                                        Elige una opción:
+                                        [1] Cuenta propia
+                                        [2] Cuenta externa
+                                        """));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+            }
         } while (op < 1 || op > 2);
 
         switch (op) {

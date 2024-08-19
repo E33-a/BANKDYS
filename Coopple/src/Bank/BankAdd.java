@@ -15,13 +15,18 @@ public class BankAdd {
         char r;
 
         do{
+            opc = -1;
             do{
-                opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                \nTipo de cliente
-                                                \n[1] Nomina
-                                                \n[2] Debito
-                                                \n[3] Credito\n
-                                                                    """));
+                try{
+                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                    \nTipo de cliente
+                                                    \n[1] Nomina
+                                                    \n[2] Debito
+                                                    \n[3] Credito\n
+                                                                        """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (opc < 1 || opc > 3);
 
             switch(opc){
@@ -49,9 +54,7 @@ public class BankAdd {
 
         JOptionPane.showMessageDialog(null, "Bienvenido al sistema de registro de usuarios de BANKDYS\n\tA continuación introduce a los usuarios");
         do {
-            //CardPayroll nCard = new Card("1206", "2409");
-
-            // Captura de datos del cliente
+            age = -1;
             do {
                 JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE NOMINA");
 
@@ -89,9 +92,13 @@ public class BankAdd {
                 } while (surname2 == null);
 
                 // Validación y asignación de la edad
-                age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
-                if (age < 18 || age > 110) {
-                    JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                try{
+                    age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
+                    if (age < 18 || age > 110) {
+                        JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                    }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para la edad.");
                 }
             } while (age < 18 || age > 110);
 
@@ -132,8 +139,8 @@ public class BankAdd {
             } while (!isNum);*/
 
             // Validación y captura del saldo de tarjeta
+            balance = -1;
             do {
-                balance = -1;
                 try {
                     balance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo: "));
                     if (balance < 0 || balance > 100000) {
@@ -145,8 +152,13 @@ public class BankAdd {
             } while (balance < 0 || balance > 100000);
             
             //Validacion y asignacion de salario
+            salary = -1;
             do {
-                salary = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el salario: "));
+                try{
+                    salary = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el salario: "));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el salario.");
+                }
             } while (salary < 0 || salary > 1000000);
 
             /*// Validación y captura de la deuda
@@ -164,14 +176,20 @@ public class BankAdd {
             typeCred = "";
 
             //Asignacion y validacion de credito
+            forCredit = -1;
             do{
-                forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                                        \n\t CREDITOS
-                                                                        \n [1] CASA ($300,000, 36 meses, 12% interes)
-                                                                        \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
-                                                                        \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
-                                                                            """));
+                try{
+                    forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                            \n\t CREDITOS
+                                                                            \n [1] CASA ($300,000, 36 meses, 12% interes)
+                                                                            \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
+                                                                            \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
+                                                                                """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (forCredit < 1 || forCredit > 3);
+
             switch (forCredit) {
                 case 1:
                     amount = 300000;
@@ -238,6 +256,7 @@ public class BankAdd {
 
         JOptionPane.showMessageDialog(null, "Bienvenido al sistema de registro de usuarios de BANKDYS\n\tA continuación introduce a los usuarios");
         do {
+            age = -1;
             // Captura de datos del cliente
             do {
                 JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE CREDITO");
@@ -276,9 +295,13 @@ public class BankAdd {
                 } while (surname2 == null);
 
                 // Validación y asignación de la edad
-                age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
-                if (age < 18 || age > 110) {
-                    JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                try{
+                    age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
+                    if (age < 18 || age > 110) {
+                        JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                    }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para la edad.");
                 }
             } while (age < 18 || age > 110);
 
@@ -289,23 +312,43 @@ public class BankAdd {
             } while (gender != 'M' && gender != 'F');
 
             // Validación y captura del saldo de tarjeta
+            creditBalance = -1;
             do {
-                creditBalance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo de credito: "));
+                try{
+                    creditBalance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo de credito: "));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el saldo de credito.");
+                }
             } while (creditBalance < 0 || creditBalance > 1000000);
 
             //Validacion y asignacion de descuento de tarjeta
+            discount = 0;
             do{
-                discount = Double.parseDouble(JOptionPane.showInputDialog("Descuento de la tarjeta\nEntre 12% a 15%"));
+                try{
+                    discount = Double.parseDouble(JOptionPane.showInputDialog("Descuento de la tarjeta\nEntre 12% a 15%"));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el descuento.");
+                }
             } while (discount < 0.12 || discount > 0.15);
 
             //Validacion y asignacion del interes de tarjeta
+            cardInterest = 0;
             do{
-                cardInterest = Double.parseDouble(JOptionPane.showInputDialog("Interes de la tarjeta\nEntre 10% a 20%"));
+                try{
+                    cardInterest = Double.parseDouble(JOptionPane.showInputDialog("Interes de la tarjeta\nEntre 10% a 20%"));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el interes de la tarjeta.");
+                }
             } while (cardInterest < 0.10 || cardInterest > 0.20);
 
             //Validacion y asignacion de salario
+            salary = -1;
             do {
-                salary = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el salario: "));
+                try{
+                    salary = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el salario: "));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el salario.");
+                }
             } while (salary < 0 || salary > 1000000);
 
             // Creación de un nuevo objeto Customer con los datos capturados
@@ -318,13 +361,18 @@ public class BankAdd {
             typeCred = "";
 
             //Asignacion y validacion de credito
+            forCredit = -1;
             do{
-                forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                                        \n\t CREDITOS
-                                                                        \n [1] CASA ($300,000, 36 meses, 12% interes)
-                                                                        \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
-                                                                        \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
-                                                                            """));
+                try{
+                    forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                            \n\t CREDITOS
+                                                                            \n [1] CASA ($300,000, 36 meses, 12% interes)
+                                                                            \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
+                                                                            \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
+                                                                                """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (forCredit < 1 || forCredit > 3);
             switch (forCredit) {
                 case 1:
@@ -389,6 +437,7 @@ public class BankAdd {
 
         JOptionPane.showMessageDialog(null, "Bienvenido al sistema de registro de usuarios de BANKDYS\n\tA continuación introduce a los usuarios");
         do {
+            age = -1;
             // Captura de datos del cliente
             do {
                 JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE DEBITO");
@@ -427,9 +476,13 @@ public class BankAdd {
                 } while (surname2 == null);
 
                 // Validación y asignación de la edad
-                age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
-                if (age < 18 || age > 110) {
-                    JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                try{
+                    age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
+                    if (age < 18 || age > 110) {
+                        JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                    }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para la edad.");
                 }
             } while (age < 18 || age > 110);
 
@@ -440,18 +493,33 @@ public class BankAdd {
             } while (gender != 'M' && gender != 'F');
 
             // Validación y captura del saldo de tarjeta
+            balance = -1;
             do {
-                balance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo: "));
+                try{
+                    balance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo: "));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el saldo.");
+                }
             } while (balance < 0 || balance > 1000000);
 
             //Validacion y asignacion de descuento de tarjeta
+            discount = 0;
             do{
-                discount = Double.parseDouble(JOptionPane.showInputDialog("Descuento de la tarjeta\nEntre 12% a 15%"));
+                try{
+                    discount = Double.parseDouble(JOptionPane.showInputDialog("Descuento de la tarjeta\nEntre 12% a 15%"));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el descuento.");
+                }
             } while (discount < 0.10 || discount > 0.15);
 
             //Validacion y asignacion de salario
+            salary = -1;
             do {
-                salary = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el salario: "));
+                try{
+                    salary = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el salario: "));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el salario.");
+                }
             } while (salary < 0 || salary > 1000000);
 
             // Creación de un nuevo objeto Customer con los datos capturados
@@ -464,13 +532,18 @@ public class BankAdd {
             typeCred = "";
 
             //Asignacion y validacion de credito
+            forCredit = -1;
             do{
-                forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                                        \n\t CREDITOS
-                                                                        \n [1] CASA ($300,000, 36 meses, 12% interes)
-                                                                        \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
-                                                                        \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
-                                                                            """));
+                try{
+                    forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                            \n\t CREDITOS
+                                                                            \n [1] CASA ($300,000, 36 meses, 12% interes)
+                                                                            \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
+                                                                            \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
+                                                                                """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (forCredit < 1 || forCredit > 3);
             switch (forCredit) {
                 case 1:

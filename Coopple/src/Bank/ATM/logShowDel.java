@@ -50,13 +50,18 @@ public class logShowDel {
 
     public static void showEveryone(){
         int opc;
+        opc = -1;
         do{
-            opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                                MOSTRAR CLIENTES:
-                                                                \n[1] Nomina
-                                                                \n[2] Debito
-                                                                \n[3] Credito\n
-                                                                    """));
+            try{
+                opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                    MOSTRAR CLIENTES:
+                                                                    \n[1] Nomina
+                                                                    \n[2] Debito
+                                                                    \n[3] Credito\n
+                                                                        """));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+            }
         } while (opc < 1 || opc > 3);
         switch (opc) {
             case 1:

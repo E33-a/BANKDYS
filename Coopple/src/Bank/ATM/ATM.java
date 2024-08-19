@@ -145,8 +145,10 @@ public class ATM {
         char res;
 
         do{
+            opc = -1;
             do{
-                opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                try{
+                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
                                             DEPOSITO A:
                                             Elige una opcion:
                                              [1] Consultar saldo
@@ -154,6 +156,9 @@ public class ATM {
                                              [3] Retirar
                                              [0] Salir\n
                                             """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (opc < 0 || opc > 3);
 
             switch(opc) {
@@ -182,15 +187,20 @@ public class ATM {
         char res;
 
         do{
+            opc = -1;
             do{
-                opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                            DEPOSITO A:
-                                            Elige una opcion:
-                                             [1] Consultar saldo
-                                             [2] Depositar
-                                             [3] Retirar
-                                             [4] Salir\n
-                                            """));
+                try{
+                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                DEPOSITO A:
+                                                Elige una opcion:
+                                                [1] Consultar saldo
+                                                [2] Depositar
+                                                [3] Retirar
+                                                [4] Salir\n
+                                                """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (opc < 0 || opc > 3);
 
             switch(opc) {
@@ -219,15 +229,20 @@ public class ATM {
         char res;
 
         do{
+            opc = -1;
             do{
-                opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                            DEPOSITO A:
-                                            Elige una opcion:
-                                             [1] Consultar credito
-                                             [2] Depositar
-                                             [3] Retirar
-                                             [0] Salir\n
-                                            """));
+                try{
+                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                DEPOSITO A:
+                                                Elige una opcion:
+                                                [1] Consultar credito
+                                                [2] Depositar
+                                                [3] Retirar
+                                                [0] Salir\n
+                                                """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
             } while (opc < 0 || opc > 3);
 
             switch(opc) {

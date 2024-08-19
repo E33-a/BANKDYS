@@ -9,25 +9,29 @@ public class BANKDYS {
     public static void main(String[] args) {
 
         String numberT;
-        double moneyAtm;
+        double moneyAtm = 0;
 
         int option = -1;
         try{
             while (option != 0) {
                 numberT = "";
-            option = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                \n\t MENU
-                                                \n [1]  Añadir cliente
-                                                \n [2]  Buscar cliente (No. tarjeta)
-                                                \n [3]  Mostrar información de clientes
-                                                \n [4]  Eliminar cliente (No. tarjeta)
-                                                \n [5]  Asignar dinero al ATM
-                                                \n [6]  ATM - Operaciones
-                                                \n [7]  
-                                                \n [8]  
-                                                \n [0]  Salir
-                                                \n\n\tSeleccione una opción:
-                                                """));
+                try{
+                    option = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                        \n\t MENU
+                                                        \n [1]  Añadir cliente
+                                                        \n [2]  Buscar cliente (No. tarjeta)
+                                                        \n [3]  Mostrar información de clientes
+                                                        \n [4]  Eliminar cliente (No. tarjeta)
+                                                        \n [5]  Asignar dinero al ATM
+                                                        \n [6]  ATM - Operaciones
+                                                        \n [7]  
+                                                        \n [8]  
+                                                        \n [0]  Salir
+                                                        \n\n\tSeleccione una opción:
+                                                        """));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+                }
                 clearScreen();
                 switch (option) {
                     case 1:
@@ -79,6 +83,8 @@ public class BANKDYS {
                             System.out.println("Error: " + a);
                             JOptionPane.showMessageDialog(null, "Error inesperado al asignar dinero\nIntenta nuevamente");
                         }
+                        String message = "Dinero asignado correctamente al cajero\nCantidad asignada: $" + moneyAtm;
+                            JOptionPane.showMessageDialog(null, message);
                             break;
                     case 6:
 
