@@ -20,9 +20,7 @@ public class ATM {
         return moneyT;
     }
 
-
     //logins
-
     public static void logginPayroll(String cardNumber) {
         String nameCom;
         String nip;
@@ -54,15 +52,13 @@ public class ATM {
                     } while (!current.cus.getCard().getNip().equals(nip));
     
                     JOptionPane.showMessageDialog(null, "Acceso permitido\nBienvenido " + nameCom);
+
                     optionsCus(current.cus);
                     return;
                 }
             current = current.next;
             }
-            //JOptionPane.showMessageDialog(null, "Número de tarjeta no encontrado");
-        }// else {
-            //JOptionPane.showMessageDialog(null, "No hay clientes en la lista de nómina");
-        //}
+        }
     }
     
     public static void logginCredit(String cardNumber){
