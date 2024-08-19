@@ -4,9 +4,7 @@ import javax.swing.JOptionPane;
 
 import Bank.ATM.ATM;
 import Bank.ATM.logShowDel;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import Bank.ListFInal.ListFinal;
 
 public class BANKDYS {
     public static void main(String[] args) {
@@ -108,14 +106,14 @@ public class BANKDYS {
                         logShowDel.typeLoggin(numberT);//buscar y seleccionar tipo de loggeo
                         break;
                     case 7:
-                        //falta implementacion
-                        LocalDateTime fechaHoy = LocalDateTime.now();
-                        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-                        String fecha = fechaHoy.format(formatDate);
-                        String time = fechaHoy.format(formatTime);
-                        JOptionPane.showMessageDialog(null, "Operacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                        JOptionPane.showMessageDialog(null, "Ordenando todas las listas\nRespecto al numero de tarjeta");
+                        ListFinal.ListP.sort();
+                        JOptionPane.showMessageDialog(null, "Lista de NOMINA ordenada");
+                        ListFinal.ListD.sort();
+                        JOptionPane.showMessageDialog(null, "Lista de DEBITO ordenada");
+                        ListFinal.ListC.sort();
+                        JOptionPane.showMessageDialog(null, "Lista de CREDITO ordenada");
+                        JOptionPane.showMessageDialog(null, "TODAS LAS LISTAS\nHAN SIDO ORDENANDAS");
                         break;
                     case 0:
                         System.out.println("\nSaliendo...");
