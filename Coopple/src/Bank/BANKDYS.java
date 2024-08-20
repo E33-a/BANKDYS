@@ -3,7 +3,7 @@ package Bank;
 import javax.swing.JOptionPane;
 import Bank.ATM.ATM;
 import Bank.ATM.logShowDel;
-import Bank.Interface.crud;
+import Bank.Interface.crud2;
 import Bank.ListFInal.ListFinal;
 
 public class BANKDYS {
@@ -36,11 +36,11 @@ public class BANKDYS {
                 clearScreen();
                 switch (option) {
                     case 1:
-                        crud.create();
+                        crud2.create();
                         break;
 
                     case 2:
-                        crud.read(numberT);
+                        crud2.read(numberT);
                         break;
 
                     case 3:
@@ -48,11 +48,11 @@ public class BANKDYS {
                         break;
 
                     case 4:
-                        crud.delete(numberT);
+                        crud2.delete(numberT);
                         break;
 
                     case 5:
-                        crud.update(numberT);
+                        crud2.update(numberT);
                         break;
 
                     case 6:
