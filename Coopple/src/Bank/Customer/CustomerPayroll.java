@@ -7,7 +7,7 @@ public class CustomerPayroll extends Customer {
     private CardPayroll card;
 
     public CustomerPayroll(String name, String surname1, String surname2, int age, char gender, double salary, CreditC credit, CardPayroll card) {
-        super(name, surname1, surname2, age, gender, salary, credit);
+        super(name, surname1, surname2, age, gender, salary, credit, card);
         this.card = card;
     }
 

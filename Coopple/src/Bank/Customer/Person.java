@@ -32,6 +32,10 @@ public abstract class Person {
         this.gender = gender;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     //getters
     public String getName(){
         return name;

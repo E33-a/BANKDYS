@@ -7,7 +7,7 @@ public class CustomerCredit extends Customer{
     private CardCredit Card;
 
     public CustomerCredit(String name, String surname1, String surname2, int age, char gender, double salary, CreditC Credit, CardCredit Card){
-        super(name, surname1, surname2, age, gender, salary, Credit);
+        super(name, surname1, surname2, age, gender, salary, Credit, Card);
     this.Card = Card;
     }
 

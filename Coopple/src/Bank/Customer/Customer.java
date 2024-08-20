@@ -1,17 +1,18 @@
 package Bank.Customer;
 
+import Bank.Card.Card;
 import Bank.Credit.CreditC;
 
 public abstract class Customer extends Person{
     protected double salary;
-    //protected Card Card;
+    protected Card card;
     protected CreditC Credit;
 
-    Customer(String name, String surname1, String surname2, int age, char gender, double salary, CreditC Credit){
+    Customer(String name, String surname1, String surname2, int age, char gender, double salary, CreditC Credit, Card card){
         super(name, surname1, surname2, age, gender);
 
     this.salary = salary;
-    //this.Card = Card;
+    this.card = card;
     this.Credit = Credit;
     }
 
@@ -20,9 +21,9 @@ public abstract class Customer extends Person{
         this.salary = salary;
     }
 
-    /*public void assingCardPayroll(Card Card){
-        this.Card = Card;
-    }*/
+    public void assingCardPayroll(Card card){
+        this.card = card;
+    }
 
     public void assingCredit(CreditC Credit){
         this.Credit = Credit;
@@ -33,9 +34,9 @@ public abstract class Customer extends Person{
         return salary;
     }
 
-    /*public Card getCard(){
-        return Card;
-    }*/
+    public Card getCard(){
+        return card;
+    }
 
     public CreditC getCredit(){
         return Credit;

@@ -29,7 +29,7 @@ public class BankAdd {
             } while (opc < 1 || opc > 3);
         return opc;
     }
-    private static String Name(){
+    public static String Name(){
         String name;
         do {
             name = JOptionPane.showInputDialog("Ingresa el nombre: ");
@@ -42,7 +42,7 @@ public class BankAdd {
         } while (name == null);
         return name;
     }
-    private static String Surname1(){
+    public static String Surname1(){
         String surname1;
         do {
             surname1 = JOptionPane.showInputDialog("Ingresa el primer apellido: ");
@@ -55,7 +55,7 @@ public class BankAdd {
         } while (surname1 == null);
         return surname1;
     }
-    private static String Surname2(){
+    public static String Surname2(){
         String surname2;
         do {
             surname2 = JOptionPane.showInputDialog("Ingresa el segundo apellido: ");
@@ -68,7 +68,7 @@ public class BankAdd {
         } while (surname2 == null);
         return surname2;
     }
-    private static int Age(){
+    public static int Age(){
         int age;
         age = -1;
         try{
@@ -81,7 +81,7 @@ public class BankAdd {
         }
         return age;
     }
-    private static char Gender(){
+    public static char Gender(){
         char gender;
         do{
             gender = JOptionPane.showInputDialog("Ingresa el genero  M/F").charAt(0);
@@ -89,7 +89,7 @@ public class BankAdd {
         } while (gender != 'M' && gender != 'F');
         return gender;
     }
-    private static CreditC Creditt(){
+    public static CreditC Creditt(){
         int forCredit;
         double amount = 0, interest = 0;
         int fees = 0;
@@ -131,7 +131,7 @@ public class BankAdd {
             CreditC credit = new CreditC(amount, interest, fees, typeCred);
             return credit;
     }
-    private static double Salary(){
+    public static double Salary(){
         double salary;
         salary = -1;
         do {
@@ -218,8 +218,6 @@ public class BankAdd {
             CreditC credit = Creditt();
 
             CustomerPayroll cusPay = new CustomerPayroll(name, surname1, surname2, age, gender, salary, credit, card);
-            
-            //nCustomer.assignCard(nCard); // Asignación de tarjeta al cliente
             
             // Agregamos el cliente a la lista de Payroll
             ListFinal.ListP.insertBegining(cusPay);

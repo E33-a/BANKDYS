@@ -48,6 +48,26 @@ public class logShowDel {
         }
     }
 
+    public static void updateFound(String cardNumber){//Actualizar datos de un usuario
+
+        if (ListFinal.ListP.findCus(cardNumber)) {
+            updateCus.updatePay(cardNumber);
+            return;
+        }
+        else if (ListFinal.ListD.findCus(cardNumber)) {
+            updateCus.updateDeb(cardNumber);
+            return;
+        }
+        else if (ListFinal.ListC.findCus(cardNumber)) {
+            updateCus.updateCre(cardNumber);
+            return;
+        }
+        if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
+            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nIntente nuevamente");
+        return;
+        }
+    }
+
     public static void showEveryone(){
         int opc;
         opc = -1;
