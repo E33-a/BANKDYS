@@ -18,7 +18,7 @@ public class BANKDYS {
                 numberT = "";
                 try {
                     option = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                        \n\t MENU
+                                                        \n\t MENÚ
                                                         \n [1]  Añadir cliente
                                                         \n [2]  Buscar cliente (No. tarjeta)
                                                         \n [3]  Mostrar información de clientes
@@ -36,27 +36,10 @@ public class BANKDYS {
                 clearScreen();
                 switch (option) {
                     case 1:
-                        //BankAdd.addCustomer(); // Añadir cliente de cualquier tipo
                         crud.create();
                         break;
 
                     case 2:
-                        /*try {
-                            do {
-                                numberT = JOptionPane.showInputDialog("BUSCAR CUENTA\nIngresa el número de tarjeta: ");
-                                if (numberT != null && numberT.length() == 16 && numberT.matches("\\d{16}")) {
-                                    break;
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "El número de tarjeta debe ser numérico y tener exactamente 16 dígitos.");
-                                }
-                            } while (true);
-
-                        } catch (NumberFormatException e) {
-                            System.out.println("Error: " + e);
-                            JOptionPane.showMessageDialog(null, "Error inesperado al buscar la cuenta\nInténtalo nuevamente");
-                            continue;
-                        }
-                        logShowDel.showFound(numberT); // Buscar e imprimir datos*/
                         crud.read(numberT);
                         break;
 
@@ -65,40 +48,10 @@ public class BANKDYS {
                         break;
 
                     case 4:
-                        /*try {
-                            do {
-                                numberT = JOptionPane.showInputDialog("BUSCAR CUENTA A ELIMINAR\nIngresa el número de tarjeta: ");
-                                if (numberT != null && numberT.length() == 16 && numberT.matches("\\d{16}")) {
-                                    break;
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "El número de tarjeta debe ser numérico y tener exactamente 16 dígitos.");
-                                }
-                            } while (true);
-                        } catch (Exception a) {
-                            System.out.println("Error: " + a);
-                            JOptionPane.showMessageDialog(null, "Error inesperado al buscar la cuenta a eliminar\nInténtalo nuevamente");
-                        }
-                        logShowDel.delCustomer(numberT);*/
                         crud.delete(numberT);
                         break;
 
                     case 5:
-                        /*try { // Editar información (update)
-                            do {
-                                numberT = JOptionPane.showInputDialog("BUSCAR CUENTA\nIngresa el número de tarjeta: ");
-                                if (numberT != null && numberT.length() == 16 && numberT.matches("\\d{16}")) {
-                                    break;
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "El número de tarjeta debe ser numérico y tener exactamente 16 dígitos.");
-                                }
-                            } while (true);
-
-                        } catch (NumberFormatException e) {
-                            System.out.println("Error: " + e);
-                            JOptionPane.showMessageDialog(null, "Error inesperado al buscar la cuenta\nInténtalo nuevamente");
-                            continue;
-                        }
-                        logShowDel.updateFound(numberT);*/
                         crud.update(numberT);
                         break;
 
