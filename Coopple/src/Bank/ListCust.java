@@ -59,7 +59,7 @@ public class ListCust implements Files{
                 
                 CardPayroll CardP = new CardPayroll(number, nip, type, balance);
                 CreditC CredC = new CreditC(amount, interest, fees, typeCred);
-                listPayroll.insertBegining(new CustomerPayroll(name, surname1, surname2, age, gender, salary, CredC, CardP));
+                listPayroll.insertBeginning(new CustomerPayroll(name, surname1, surname2, age, gender, salary, CredC, CardP));
             }
 
             in.close();
@@ -98,7 +98,7 @@ public class ListCust implements Files{
                 
                 CardDebit CardD = new CardDebit(number, nip, type, balance, discount);
                 CreditC CredC = new CreditC(amount, interest, fees, typeCred);
-                listDebit.insertBegining(new CustomerDebit(name, surname1, surname2, age, gender, salary, CredC, CardD));
+                listDebit.insertBeginning(new CustomerDebit(name, surname1, surname2, age, gender, salary, CredC, CardD));
             }
 
             in.close();
@@ -138,7 +138,7 @@ public class ListCust implements Files{
                 
                 CardCredit CardC = new CardCredit(number, nip, type, creditBalance, cardInterest, discount);
                 CreditC CredC = new CreditC(amount, interest, fees, typeCred);
-                listCredit.insertBegining(new CustomerCredit(name, surname1, surname2, age, gender, salary, CredC, CardC));
+                listCredit.insertBeginning(new CustomerCredit(name, surname1, surname2, age, gender, salary, CredC, CardC));
             }
 
             in.close();

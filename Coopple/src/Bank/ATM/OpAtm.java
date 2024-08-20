@@ -10,26 +10,29 @@ import Bank.Customer.CustomerDebit;
 import Bank.Customer.CustomerPayroll;
 
 public class OpAtm {
-    static LocalDateTime fechaHoy = LocalDateTime.now();
-    static DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    static DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-    static String fecha = fechaHoy.format(formatDate);
-    static String time = fechaHoy.format(formatTime);
-                        //private JOptionPane.showMessageDialog(null, "Operacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+    
+    private static String Date(){
+        LocalDateTime fechaHoy = LocalDateTime.now();
+        DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String fecha = fechaHoy.format(formatDate);
+        String time = fechaHoy.format(formatTime);
+        String date = "\nFecha: " + fecha + "\nHora: " + time;
+        return date;
+    }
         
     // Método para consultar el saldo del cliente // son sobrecargados dependiendo del tipo de cliente y tarjeta
     public static void checkBalance(CustomerPayroll cus) {
         double balance = cus.getCard().getBalance();
-        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance + "\n\nOperación realizada en:" + Date());
     }
     public static void checkBalance(CustomerCredit cus) {
         double balance = cus.getCard().getCreditBalance();
-        JOptionPane.showMessageDialog(null, "Tu saldo de credito actual es: \n$" + balance + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+        JOptionPane.showMessageDialog(null, "Tu saldo de credito actual es: \n$" + balance + "\n\nOperación realizada en:" + Date());
     }
     public static void checkBalance(CustomerDebit cus) {
         double balance = cus.getCard().getBalance();
-        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+        JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + balance + "\n\nOperación realizada en:" + Date());
     }
 
     // Método para depositar dinero en la cuenta del cliente
@@ -44,10 +47,10 @@ public class OpAtm {
             try{
                 moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
                 if (moneyDe < 100 || moneyDe > 5000) {
-                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nInténtalo nuevamente");
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el deposito.");
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el depósito.");
             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
@@ -55,7 +58,11 @@ public class OpAtm {
         do {
             try{
                 op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                        DEPOSITO A:
+                                        DEPÓ
+                                        
+                                        
+                                        
+                                        SITO A:
                                         Elige una opción:
                                         [1] Cuenta propia
                                         [2] Cuenta externa
@@ -70,7 +77,7 @@ public class OpAtm {
                 double balance = cus.getCard().getCreditBalance();
                 balance += moneyDe;
                 cus.getCard().setCreditBalance(balance);
-                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperación realizada en:" + Date());
             }
             case 2 -> {
                 do {
@@ -81,7 +88,7 @@ public class OpAtm {
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperación realizada en:" + Date());
                     balance -= moneyDe;
                     cus.getCard().setCreditBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getCreditBalance());
@@ -100,10 +107,10 @@ public class OpAtm {
             try{
                 moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
                 if (moneyDe < 100 || moneyDe > 5000) {
-                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nInténtalo nuevamente");
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el deposito.");
+                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el depósito.");
             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
@@ -111,7 +118,7 @@ public class OpAtm {
         do {
             try{
                 op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                        DEPOSITO A:
+                                        DEPÓSITO A:
                                         Elige una opción:
                                         [1] Cuenta propia
                                         [2] Cuenta externa
@@ -126,7 +133,7 @@ public class OpAtm {
                 double balance = cus.getCard().getBalance();
                 balance += moneyDe;
                 cus.getCard().setBalance(balance);
-                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperación realizada en:" + Date());
             }
             case 2 -> {
                 do {
@@ -137,7 +144,7 @@ public class OpAtm {
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperación realizada en:" + Date());
                     balance -= moneyDe;
                     cus.getCard().setBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
@@ -156,7 +163,7 @@ public class OpAtm {
              try{
                 moneyDe = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a depositar"));
                 if (moneyDe < 100 || moneyDe > 5000) {
-                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nIntenta nuevamente");
+                    JOptionPane.showMessageDialog(null, "Debes ingresar una cantidad válida\nInténtalo nuevamente");
                 }
              } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
@@ -167,7 +174,7 @@ public class OpAtm {
         do {
             try{
                 op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                        DEPOSITO A:
+                                        DEPÓSITO A:
                                         Elige una opción:
                                         [1] Cuenta propia
                                         [2] Cuenta externa
@@ -182,7 +189,7 @@ public class OpAtm {
                 double balance = cus.getCard().getBalance();
                 balance += moneyDe;
                 cus.getCard().setBalance(balance);
-                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperación realizada en:" + Date());
             }
             case 2 -> {
                 do {
@@ -193,7 +200,7 @@ public class OpAtm {
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+                    JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA la cuenta: " + cta + "\n\nOperación realizada en:" + Date());
                     balance -= moneyDe;
                     cus.getCard().setBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
@@ -216,14 +223,14 @@ public class OpAtm {
             try{//tratar de hacer la conversion
                 mWithdraw = Double.parseDouble(in);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Selecciona una cantidad valida");
+                JOptionPane.showMessageDialog(null, "Selecciona una cantidad válida");
                 continue;//volver a repetir si no fue exitoso
             }
             if (mWithdraw < 50 || mWithdraw > 15000) {
-                JOptionPane.showMessageDialog(null, "Debes retirar una cantidad válida\nIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "Debes retirar una cantidad válida\nInténtalo nuevamente");
             }
             else if(ATM.getMoneyT() < mWithdraw){
-                JOptionPane.showMessageDialog(null, "El cajero no tiene esa cantidad\nIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "El cajero no tiene esa cantidad\nInténtalo nuevamente");
             }
 
         } while (mWithdraw < 50 || mWithdraw > 15000 || (mWithdraw > ATM.getMoneyT()));
@@ -233,14 +240,21 @@ public class OpAtm {
         double balance = cus.getCard().getBalance();
 
         if (mWithdraw > balance || mWithdraw > atmres) {
-            JOptionPane.showMessageDialog(null, "No se puede realizar la acción");
+            if (mWithdraw > balance) {
+                JOptionPane.showMessageDialog(null, "Saldo insuficiente");
+                return;
+            }
+            else if (mWithdraw > atmres) {
+                JOptionPane.showMessageDialog(null, "Saldo del cajero insuficiente");
+                return;
+            }
         } 
         else if (mWithdraw <= balance && mWithdraw <= atmres) {
             balance -= mWithdraw;
             atmres -= mWithdraw;
             ATM.setMoneyT(atmres);
             cus.getCard().setBalance(balance);
-            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperación realizada en:" + Date());
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
         }
     }
@@ -257,14 +271,14 @@ public class OpAtm {
             try{
                 mWithdraw = Double.parseDouble(in);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Selecciona una cantidad valida");
+                JOptionPane.showMessageDialog(null, "Selecciona una cantidad válida");
                 continue;
             }
             if (mWithdraw < 50 || mWithdraw > 15000) {
-                JOptionPane.showMessageDialog(null, "Debes retirar una cantidad válida\nIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "Debes retirar una cantidad válida\nInténtalo nuevamente");
             }
             else if(ATM.getMoneyT() < mWithdraw){
-                JOptionPane.showMessageDialog(null, "El cajero no tiene esa cantidad\nIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "El cajero no tiene esa cantidad\nInténtalo nuevamente");
             }
 
         } while (mWithdraw < 50 || mWithdraw > 15000 || (mWithdraw > ATM.getMoneyT()));
@@ -274,14 +288,21 @@ public class OpAtm {
         double balance = cus.getCard().getBalance();
 
         if (mWithdraw > balance || mWithdraw > atmres) {
-            JOptionPane.showMessageDialog(null, "No se puede realizar la acción");
+            if (mWithdraw > balance) {
+                JOptionPane.showMessageDialog(null, "Saldo insuficiente");
+                return;
+            }
+            else if (mWithdraw > atmres) {
+                JOptionPane.showMessageDialog(null, "Saldo del cajero insuficiente");
+                return;
+            }
         } 
         else if (mWithdraw <= balance && mWithdraw <= atmres) {
             balance -= mWithdraw;
             atmres -= mWithdraw;
             ATM.setMoneyT(atmres);
             cus.getCard().setBalance(balance);
-            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperación realizada en:" + Date());
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
         }
     }
@@ -298,14 +319,14 @@ public class OpAtm {
             try{
                 mWithdraw = Double.parseDouble(in);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Selecciona una cantidad valida");
+                JOptionPane.showMessageDialog(null, "Selecciona una cantidad válida");
                 continue;
             }
             if (mWithdraw < 50 || mWithdraw > 15000) {
-                JOptionPane.showMessageDialog(null, "Debes retirar una cantidad válida\nIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "Debes retirar una cantidad válida\nInténtalo nuevamente");
             }
             else if(ATM.getMoneyT() < mWithdraw){
-                JOptionPane.showMessageDialog(null, "El cajero no tiene esa cantidad\nIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "El cajero no tiene esa cantidad\nInténtalo nuevamente");
             }
 
         } while (mWithdraw < 50 || mWithdraw > 15000 || (mWithdraw > ATM.getMoneyT()));
@@ -315,14 +336,21 @@ public class OpAtm {
         double balance = cus.getCard().getCreditBalance();
 
         if (mWithdraw > balance || mWithdraw > atmres) {
-            JOptionPane.showMessageDialog(null, "No se puede realizar la acción");
+            if (mWithdraw > balance) {
+                JOptionPane.showMessageDialog(null, "Saldo insuficiente");
+                return;
+            }
+            else if (mWithdraw > atmres) {
+                JOptionPane.showMessageDialog(null, "Saldo del cajero insuficiente");
+                return;
+            }
         } 
         else if (mWithdraw <= balance && mWithdraw <= atmres) {
             balance -= mWithdraw;
             atmres -= mWithdraw;
             ATM.setMoneyT(atmres);
             cus.getCard().setCreditBalance(balance);
-            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperacion realizada en:" + "\n\nFecha: " + fecha + "\nHora: " + time);
+            JOptionPane.showMessageDialog(null, "Retiro correcto de $" + mWithdraw + "\n\nOperación realizada en:" + Date());
             JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getCreditBalance());
         }
 
@@ -342,7 +370,7 @@ public class OpAtm {
             }
         } while (true);
         do {
-            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nConfirmar nuevo NIP:\n");
+            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
             confirmNIP = confirmNIP.substring(0, 4);
 
             if (newNIP.equals(confirmNIP)) {
@@ -369,7 +397,7 @@ public class OpAtm {
             }
         } while (true);
         do {
-            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nConfirmar nuevo NIP:\n");
+            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
             confirmNIP = confirmNIP.substring(0, 4);
 
             if (newNIP.equals(confirmNIP)) {
@@ -396,7 +424,7 @@ public class OpAtm {
             }
         } while (true);
         do {
-            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nConfirmar nuevo NIP:\n");
+            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
             confirmNIP = confirmNIP.substring(0, 4);
 
             if (newNIP.equals(confirmNIP)) {

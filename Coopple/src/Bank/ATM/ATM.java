@@ -11,6 +11,27 @@ import Structures.*;
 public class ATM {
     private static double moneyT; // Variable estática para el dinero total del ATM
 
+    //Operaciones a elegir después del logeo
+    private static int Opc(){
+        int opc;
+        opc = -1;
+
+        try{
+            opc = Integer.parseInt(JOptionPane.showInputDialog("""
+                                    DEPÓSITO A:
+                                    Elige una opción:
+                                     [1] Consultar saldo
+                                     [2] Depositar
+                                     [3] Retirar
+                                     [4] Cambiar NIP
+                                     [0] Salir\n
+                                    """));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+        }
+        return opc;
+    }
+
     public static void setMoneyT(double moneyT) {
         ATM.moneyT = moneyT;
     }
@@ -77,7 +98,7 @@ public class ATM {
                     do{
                         nip = JOptionPane.showInputDialog(nameCom + " ¡bienvenido!\n\tIngresa tu NIP");
                         if (nip == null) {
-                            JOptionPane.showMessageDialog(null, "Operacion cancelada");
+                            JOptionPane.showMessageDialog(null, "Operación cancelada");
                             return;
                         }
                         if (!current.cus.getCard().getNip().equals(nip)) {
@@ -114,7 +135,7 @@ public class ATM {
                     do{
                         nip = JOptionPane.showInputDialog(nameCom + " ¡bienvenido!\n\tIngresa tu NIP");
                         if (nip == null) {
-                            JOptionPane.showMessageDialog(null, "Operacion cancelada");
+                            JOptionPane.showMessageDialog(null, "Operación cancelada");
                             return;
                         }
                         if (!current.cus.getCard().getNip().equals(nip)) {
@@ -141,21 +162,8 @@ public class ATM {
         char res;
 
         do{
-            opc = -1;
             do{
-                try{
-                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                            DEPOSITO A:
-                                            Elige una opcion:
-                                             [1] Consultar saldo
-                                             [2] Depositar
-                                             [3] Retirar
-                                             [4] Cambiar NIP
-                                             [0] Salir\n
-                                            """));
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
-                }
+                opc = Opc();
             } while (opc < 0 || opc > 4);
 
             switch(opc) {
@@ -179,7 +187,7 @@ public class ATM {
                 }
             }
 
-            res = JOptionPane.showInputDialog("Deseas realizar otro accion  s/n: ").charAt(0);
+            res = JOptionPane.showInputDialog("Deseas realizar otro acción  s/n: ").charAt(0);
         }while(Character.toUpperCase(res) == 'S');
     }
     private static void optionsCus(CustomerDebit customerD){
@@ -190,15 +198,7 @@ public class ATM {
             opc = -1;
              do{
                 try{
-                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                            DEPOSITO A:
-                                            Elige una opcion:
-                                             [1] Consultar saldo
-                                             [2] Depositar
-                                             [3] Retirar
-                                             [4] Cambiar NIP
-                                             [0] Salir\n
-                                            """));
+                    opc = Opc();
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
@@ -225,7 +225,7 @@ public class ATM {
                 }
             }
 
-            res = JOptionPane.showInputDialog("Deseas realizar otro accion  s/n: ").charAt(0);
+            res = JOptionPane.showInputDialog("Deseas realizar otro acción  s/n: ").charAt(0);
         }while(Character.toUpperCase(res) == 'S');
     }
     private static void optionsCus(CustomerCredit customerC){
@@ -236,15 +236,7 @@ public class ATM {
             opc = -1;
             do{
                 try{
-                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                            DEPOSITO A:
-                                            Elige una opcion:
-                                             [1] Consultar saldo
-                                             [2] Depositar
-                                             [3] Retirar
-                                             [4] Cambiar NIP
-                                             [0] Salir\n
-                                            """));
+                    opc = Opc();
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
@@ -271,7 +263,7 @@ public class ATM {
                 }
             }
 
-            res = JOptionPane.showInputDialog("Deseas realizar otro accion  s/n: ").charAt(0);
+            res = JOptionPane.showInputDialog("Deseas realizar otro acción  s/n: ").charAt(0);
         }while(Character.toUpperCase(res) == 'S');
     }
 

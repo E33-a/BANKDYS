@@ -23,7 +23,7 @@ public class logShowDel {
             return;
         }
         else {//if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
-            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nIntente nuevamente");
+            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nInténtalo nuevamente");
         return;
         }
     }
@@ -34,16 +34,16 @@ public class logShowDel {
             ListFinal.ListP.searchCus(cardNumber);
             return;
         }
-        else if (ListFinal.ListD.findCus(cardNumber)) {
+        if (ListFinal.ListD.findCus(cardNumber)) {
             ListFinal.ListD.searchCus(cardNumber);
             return;
         }
-        else if (ListFinal.ListC.findCus(cardNumber)) {
+        if (ListFinal.ListC.findCus(cardNumber)) {
             ListFinal.ListC.searchCus(cardNumber);
             return;
         }
         if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
-            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nIntente nuevamente");
+            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nInténtalo nuevamente");
         return;
         }
     }
@@ -63,7 +63,7 @@ public class logShowDel {
             return;
         }
         if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
-            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nIntente nuevamente");
+            JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nInténtalo nuevamente");
         return;
         }
     }
@@ -75,9 +75,9 @@ public class logShowDel {
             try{
                 opc = Integer.parseInt(JOptionPane.showInputDialog("""
                                                                     MOSTRAR CLIENTES:
-                                                                    \n[1] Nomina
-                                                                    \n[2] Debito
-                                                                    \n[3] Credito\n
+                                                                    \n[1] Nómina
+                                                                    \n[2] Débito
+                                                                    \n[3] Crédito\n
                                                                         """));
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
@@ -100,8 +100,8 @@ public class logShowDel {
         if(!ListFinal.ListP.isEmpty()){
             ListFinal.ListP.printForward();
             return;
-        } else {
-            JOptionPane.showMessageDialog(null, "La lista esta vacia\nPrimero agrega clientes de nomina");
+        } else if(ListFinal.ListP.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacía\nPrimero agrega clientes de nómina");
             return;
         }
     }
@@ -109,8 +109,8 @@ public class logShowDel {
         if(!ListFinal.ListD.isEmpty()){
             ListFinal.ListD.printForward();
             return;
-        } else {
-            JOptionPane.showMessageDialog(null, "La lista esta vacia\nPrimero agrega clientes de nomina");
+        } else if (ListFinal.ListD.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacía\nPrimero agrega clientes de débito");
             return;
         }
     }
@@ -118,8 +118,8 @@ public class logShowDel {
         if(!ListFinal.ListC.isEmpty()){
             ListFinal.ListC.printForward();
             return;
-        } else {
-            JOptionPane.showMessageDialog(null, "La lista esta vacia\nPrimero agrega clientes de nomina");
+        } else if (ListFinal.ListC.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La lista esta vacía\nPrimero agrega clientes de crédito");
             return;
         }
     }
@@ -139,14 +139,14 @@ public class logShowDel {
                         \tCLIENTE ELIMINADO EXITOSAMENTE
                             \nNombre: """ + nameCom + """
                             \nEdad: """ + np.cus.getAge() + """
-                            \nGenero: """ + np.cus.getGender() + """
+                            \nGénero: """ + np.cus.getGender() + """
                             \nSalario: $""" + np.cus.getSalary() + """
                             \nTipo de cliente: """ +  np.cus.getCard().getType() + """
-                            \nNumero tarjeta: """ + np.cus.getCard().getNumber() + """
+                            \nNúmero tarjeta: """ + np.cus.getCard().getNumber() + """
                             \nNIP: """ + np.cus.getCard().getNip() + """
                             \nSaldo de tarjeta: $""" + np.cus.getCard().getBalance() + """
-                            \nTipo de Credito: """ + np.cus.getCredit().getTypeCred() + """
-                            \nMonto del Credito: $""" + np.cus.getCredit().getAmount() + """
+                            \nTipo de Crédito: """ + np.cus.getCredit().getTypeCred() + """
+                            \nMonto del Crédito: $""" + np.cus.getCredit().getAmount() + """
                             \n""";
                 JOptionPane.showMessageDialog(null, messageInfo);
             } else {
@@ -162,14 +162,14 @@ public class logShowDel {
                         \tCLIENTE ELIMINADO EXITOSAMENTE
                             \nNombre: """ + nameCom + """
                             \nEdad: """ + nd.cus.getAge() + """
-                            \nGenero: """ + nd.cus.getGender() + """
+                            \nGénero: """ + nd.cus.getGender() + """
                             \nSalario: $""" + nd.cus.getSalary() + """
                             \nTipo de cliente: """ +  nd.cus.getCard().getType() + """
-                            \nNumero tarjeta: """ + nd.cus.getCard().getNumber() + """
+                            \nNúmero tarjeta: """ + nd.cus.getCard().getNumber() + """
                             \nNIP: """ + nd.cus.getCard().getNip() + """
                             \nSaldo de tarjeta: $""" + nd.cus.getCard().getBalance() + """
-                            \nTipo de Credito: """ + nd.cus.getCredit().getTypeCred() + """
-                            \nMonto del Credito: $""" + nd.cus.getCredit().getAmount() + """
+                            \nTipo de Crédito: """ + nd.cus.getCredit().getTypeCred() + """
+                            \nMonto del Crédito: $""" + nd.cus.getCredit().getAmount() + """
                             \n""";
                 JOptionPane.showMessageDialog(null, messageInfo);
             } else {
@@ -185,14 +185,14 @@ public class logShowDel {
                         \tCLIENTE ELIMINADO EXITOSAMENTE
                             \nNombre: """ + nameCom + """
                             \nEdad: """ + nc.cus.getAge() + """
-                            \nGenero: """ + nc.cus.getGender() + """
+                            \nGénero: """ + nc.cus.getGender() + """
                             \nSalario: $""" + nc.cus.getSalary() + """
                             \nTipo de cliente: """ +  nc.cus.getCard().getType() + """
-                            \nNumero tarjeta: """ + nc.cus.getCard().getNumber() + """
+                            \nNúmero tarjeta: """ + nc.cus.getCard().getNumber() + """
                             \nNIP: """ + nc.cus.getCard().getNip() + """
-                            \nSaldo de credito tarjeta: $""" + nc.cus.getCard().getCreditBalance() + """
-                            \nTipo de Credito: """ + nc.cus.getCredit().getTypeCred() + """
-                            \nMonto del Credito: $""" + nc.cus.getCredit().getAmount() + """
+                            \nSaldo de crédito tarjeta: $""" + nc.cus.getCard().getCreditBalance() + """
+                            \nTipo de Crédito: """ + nc.cus.getCredit().getTypeCred() + """
+                            \nMonto del Crédito: $""" + nc.cus.getCredit().getAmount() + """
                             \n""";
                 JOptionPane.showMessageDialog(null, messageInfo);
             } else {
@@ -201,7 +201,7 @@ public class logShowDel {
             return;
         }
         if (!ListFinal.ListP.findCus(cardNumber) && !ListFinal.ListD.findCus(cardNumber) && !ListFinal.ListC.findCus(cardNumber)) {
-            JOptionPane.showMessageDialog(null, "CLIENTE NO EXISTENTE\nIntente nuevamente");
+            JOptionPane.showMessageDialog(null, "CLIENTE NO EXISTENTE\nInténtalo nuevamente");
         return;
         }
     }

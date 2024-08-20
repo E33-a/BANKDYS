@@ -2,6 +2,7 @@ package Structures;
 
 import Bank.Customer.Customer;
 
+// Este es un nodo general del que derivan los demas
 public class Node {
     public Customer cus;
     public NodeCr next; //ref a nodo siguiente

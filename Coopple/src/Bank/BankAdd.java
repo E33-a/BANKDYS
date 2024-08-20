@@ -19,9 +19,9 @@ public class BankAdd {
                 try{
                     opc = Integer.parseInt(JOptionPane.showInputDialog("""
                                                     \nTipo de cliente
-                                                    \n[1] Nomina
-                                                    \n[2] Debito
-                                                    \n[3] Credito\n
+                                                    \n[1] Nómina
+                                                    \n[2] Débito
+                                                    \n[3] Crédito\n
                                                                         """));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
@@ -37,7 +37,7 @@ public class BankAdd {
                 name = name.toUpperCase();
             }
             if (name == null) {
-                JOptionPane.showMessageDialog(null, "Los campos deben llenarse\n\tIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "Los campos deben llenarse.\n\tInténtalo nuevamente.");
             }
         } while (name == null);
         return name;
@@ -50,7 +50,7 @@ public class BankAdd {
                 surname1 = surname1.toUpperCase();
             }
             if (surname1 == null) {
-                JOptionPane.showMessageDialog(null, "Los campos deben llenarse\n\tIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "Los campos deben llenarse.\n\tInténtalo nuevamente.");
             }
         } while (surname1 == null);
         return surname1;
@@ -63,7 +63,7 @@ public class BankAdd {
                 surname2 = surname2.toUpperCase();
             }
             if (surname2 == null) {
-                JOptionPane.showMessageDialog(null, "Los campos deben llenarse\n\tIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "Los campos deben llenarse.\n\tInténtalo nuevamente.");
             }
         } while (surname2 == null);
         return surname2;
@@ -74,7 +74,7 @@ public class BankAdd {
         try{
             age = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad: "));
             if (age < 18 || age > 110) {
-                JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años\n\tIntenta nuevamente");
+                JOptionPane.showMessageDialog(null, "La edad debe estar entre 18 y 110 años.\n\tInténtalo nuevamente.");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para la edad.");
@@ -84,8 +84,13 @@ public class BankAdd {
     public static char Gender(){
         char gender;
         do{
-            gender = JOptionPane.showInputDialog("Ingresa el genero  M/F").charAt(0);
-            gender = Character.toUpperCase(gender);
+            String input = JOptionPane.showInputDialog("Ingresa el género (M/F)");
+            // Verifica si el input es válido y tiene al menos un carácter
+            if (input != null && !input.isEmpty()) {
+                gender = Character.toUpperCase(input.charAt(0)); // Convertir a mayúscula
+            } else {
+                gender = ' '; // Valor temporal para continuar el ciclo en caso de entrada inválida
+            }
         } while (gender != 'M' && gender != 'F');
         return gender;
     }
@@ -98,10 +103,10 @@ public class BankAdd {
             do{
                 try{
                     forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                                            \n\t CREDITOS
-                                                                            \n [1] CASA ($300,000, 36 meses, 12% interes)
-                                                                            \n [2] AUTOMOVILISTICO($100,000, 24 meses, 15% interes)
-                                                                            \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interes)\n
+                                                                            \n\t CRÉDITOS
+                                                                            \n [1] CASA ($300,000, 36 meses, 12% interés)
+                                                                            \n [2] AUTOMOVILÍSTICO($100,000, 24 meses, 15% interés)
+                                                                            \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interés)\n
                                                                                 """));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
@@ -119,7 +124,7 @@ public class BankAdd {
                     amount = 100000;
                     interest = 0.15;
                     fees = 26;
-                    typeCred = "AUTOMOVILISTICO";
+                    typeCred = "AUTOMOVILÍSTICO";
                     break;
                 case 3:
                     amount = 50000;
@@ -177,7 +182,7 @@ public class BankAdd {
         JOptionPane.showMessageDialog(null, "Bienvenido al sistema de registro de usuarios de BANKDYS\n\tA continuación introduce a los usuarios");
         do {
             do {
-                JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE NOMINA");
+                JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE NÓMINA");
 
                 // Validación y asignación del nombre
                 name = Name();
@@ -201,7 +206,7 @@ public class BankAdd {
                 try {
                     balance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo: "));
                     if (balance < 0 || balance > 100000) {
-                        JOptionPane.showMessageDialog(null, "El saldo debe estar entre 0 y 100000. Intenta nuevamente.");
+                        JOptionPane.showMessageDialog(null, "El saldo debe estar entre 0 y 100000. Inténtalo nuevamente.");
                     }
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el saldo.");
@@ -220,7 +225,7 @@ public class BankAdd {
             CustomerPayroll cusPay = new CustomerPayroll(name, surname1, surname2, age, gender, salary, credit, card);
             
             // Agregamos el cliente a la lista de Payroll
-            ListFinal.ListP.insertBegining(cusPay);
+            ListFinal.ListP.insertBeginning(cusPay);
 
             //Asignacion de informacion a mostrar despues de crear un cliente
             String nameCom = cusPay.getName() + " " + cusPay.getSurname1() + " " + cusPay.getSurname2();
@@ -232,20 +237,20 @@ public class BankAdd {
                     \tCLIENTE INGRESADO EXITOSAMENTE
                         \nNombre: """ + nameCom + """
                         \nEdad: """ + cusPay.getAge() + """
-                        \nGenero: """ + cusPay.getGender() + """
+                        \nGénero: """ + cusPay.getGender() + """
                         \nSalario: $""" + cusPay.getSalary() + """
                         \nTipo de cliente: """ +  typeC + """
                         \nNumero tarjeta: """ + nuCa + """
                         \nNIP: """ + nipT + """
                         \nSaldo de tarjeta: $""" + cusPay.getCard().getBalance() + """
-                        \nTipo de Credito: """ + cusPay.getCredit().getTypeCred() + """
-                        \nMonto del Credito: $""" + cusPay.getCredit().getAmount() + """
+                        \nTipo de Crédito: """ + cusPay.getCredit().getTypeCred() + """
+                        \nMonto del Crédito: $""" + cusPay.getCredit().getAmount() + """
                         \n""";
             
             //Mostrar informacion relevante del cliente despues de guardarlo
             JOptionPane.showMessageDialog(null, messageInfo);
 
-            res = JOptionPane.showInputDialog("Agregar nuevo cliente Nomina s/n: ").charAt(0);
+            res = JOptionPane.showInputDialog("Agregar nuevo cliente Nómina s/n: ").charAt(0);
         } while (Character.toUpperCase(res) == 'S');
     }
 
@@ -262,7 +267,7 @@ public class BankAdd {
             age = -1;
             // Captura de datos del cliente
             do {
-                JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE CREDITO");
+                JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE CRÉDITO");
 
                 // Validación y asignación del nombre
                 name = Name();
@@ -285,9 +290,9 @@ public class BankAdd {
             creditBalance = -1;
             do {
                 try{
-                    creditBalance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo de credito: "));
+                    creditBalance = Double.parseDouble(JOptionPane.showInputDialog("Ingresa el saldo de crédito: "));
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el saldo de credito.");
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el saldo de crédito.");
                 }
             } while (creditBalance < 0 || creditBalance > 1000000);
 
@@ -305,9 +310,9 @@ public class BankAdd {
             cardInterest = 0;
             do{
                 try{
-                    cardInterest = Double.parseDouble(JOptionPane.showInputDialog("Interes de la tarjeta\nEntre 10% a 20%"));
+                    cardInterest = Double.parseDouble(JOptionPane.showInputDialog("Interés de la tarjeta\nEntre 10% a 20%"));
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el interes de la tarjeta.");
+                    JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido para el interés de la tarjeta.");
                 }
             } while (cardInterest < 0.10 || cardInterest > 0.20);
 
@@ -323,7 +328,7 @@ public class BankAdd {
             CustomerCredit cusCre = new CustomerCredit(name, surname1, surname2, age, gender, salary, credit, card);
             
             // Agregamos el cliente a la lista de Debit
-            ListFinal.ListC.insertBegining(cusCre);
+            ListFinal.ListC.insertBeginning(cusCre);
 
             //Asignacion de informacion a mostrar despues de crear un cliente
             String nameCom = cusCre.getName() + " " + cusCre.getSurname1() + " " + cusCre.getSurname2();
@@ -335,20 +340,20 @@ public class BankAdd {
                     \tCLIENTE INGRESADO EXITOSAMENTE
                         \nNombre: """ + nameCom + """
                         \nEdad: """ + cusCre.getAge() + """
-                        \nGenero: """ + cusCre.getGender() + """
+                        \nGénero: """ + cusCre.getGender() + """
                         \nSalario: $""" + cusCre.getSalary() + """
                         \nTipo de cliente: """ +  typeC + """
                         \nNumero tarjeta: """ + nuCa + """
                         \nNIP: """ + nipT + """
-                        \nSaldo de credito tarjeta: $""" + cusCre.getCard().getCreditBalance() + """
-                        \nTipo de Credito: """ + cusCre.getCredit().getTypeCred() + """
-                        \nMonto del Credito: $""" + cusCre.getCredit().getAmount() + """
+                        \nSaldo de crédito tarjeta: $""" + cusCre.getCard().getCreditBalance() + """
+                        \nTipo de Crédito: """ + cusCre.getCredit().getTypeCred() + """
+                        \nMonto del Crédito: $""" + cusCre.getCredit().getAmount() + """
                         \n""";
             
             //Mostrar informacion relevante del cliente despues de guardarlo
             JOptionPane.showMessageDialog(null, messageInfo);
 
-            res = JOptionPane.showInputDialog("Agregar nuevo cliente credito s/n: ").charAt(0);
+            res = JOptionPane.showInputDialog("Agregar nuevo cliente crédito s/n: ").charAt(0);
         } while (Character.toUpperCase(res) == 'S');
     }
     private static void addDebit(){
@@ -363,7 +368,7 @@ public class BankAdd {
         do {
             // Captura de datos del cliente
             do {
-                JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE DEBITO");
+                JOptionPane.showMessageDialog(null, "INGRESAR DATOS DE NUEVO CLIENTE DÉBITO");
 
                 // Validación y asignación del nombre
                 name = Name();
@@ -414,7 +419,7 @@ public class BankAdd {
             CustomerDebit cusDeb = new CustomerDebit(name, surname1, surname2, age, gender, salary, credit, card);
             
             // Agregamos el cliente a la lista de Debit
-            ListFinal.ListD.insertBegining(cusDeb);
+            ListFinal.ListD.insertBeginning(cusDeb);
 
             //Asignacion de informacion a mostrar despues de crear un cliente
             String nameCom = cusDeb.getName() + " " + cusDeb.getSurname1() + " " + cusDeb.getSurname2();
@@ -426,20 +431,20 @@ public class BankAdd {
                     \tCLIENTE INGRESADO EXITOSAMENTE
                         \nNombre: """ + nameCom + """
                         \nEdad: """ + cusDeb.getAge() + """
-                        \nGenero: """ + cusDeb.getGender() + """
+                        \nGénero: """ + cusDeb.getGender() + """
                         \nSalario: $""" + cusDeb.getSalary() + """
                         \nTipo de cliente: """ +  typeC + """
                         \nNumero tarjeta: """ + nuCa + """
                         \nNIP: """ + nipT + """
                         \nSaldo de tarjeta: $""" + cusDeb.getCard().getBalance() + """
-                        \nTipo de Credito: """ + cusDeb.getCredit().getTypeCred() + """
-                        \nMonto del Credito: $""" + cusDeb.getCredit().getAmount() + """
+                        \nTipo de Crédito: """ + cusDeb.getCredit().getTypeCred() + """
+                        \nMonto del Crédito: $""" + cusDeb.getCredit().getAmount() + """
                         \n""";
             
             //Mostrar informacion relevante del cliente despues de guardarlo
             JOptionPane.showMessageDialog(null, messageInfo);
 
-            res = JOptionPane.showInputDialog("Agregar nuevo cliente debito s/n: ").charAt(0);
+            res = JOptionPane.showInputDialog("Agregar nuevo cliente débito s/n: ").charAt(0);
         } while (Character.toUpperCase(res) == 'S');
     }
 }
