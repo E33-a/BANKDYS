@@ -5,7 +5,7 @@ import Bank.ATM.logShowDel;
 
 import javax.swing.JOptionPane;
 
-public class crud2 implements CRUD{
+public class crud2 implements crudInter{
     public static void create(){
         BankAdd.addCustomer();
     }
