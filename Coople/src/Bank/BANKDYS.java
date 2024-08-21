@@ -17,19 +17,7 @@ public class BANKDYS {
             while (option != 0) {
                 numberT = "";
                 try {
-                    option = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                        \n\t MENÚ
-                                                        \n  [1]  Añadir cliente
-                                                        \n  [2]  Buscar cliente
-                                                        \n  [3]  Mostrar información
-                                                        \n  [4]  Eliminar cliente
-                                                        \n  [5]  Editar información
-                                                        \n  [6]  Asignar dinero al ATM
-                                                        \n  [7]  ATM - Operaciones
-                                                        \n  [8]  Ordenar listas
-                                                        \n  [0]  Salir
-                                                        \n\n\tSeleccione una opción:
-                                                        """));
+                    option = Integer.parseInt(JOptionPane.showInputDialog("\n\t MENÚ\n  [1]  Añadir cliente\n  [2]  Buscar cliente\n  [3]  Mostrar información\n  [4]  Eliminar cliente\n  [5]  Editar información\n  [6]  Asignar dinero al ATM\n  [7]  ATM - Operaciones\n  [8]  Ordenar listas\n  [0]  Salir\n\n\tSeleccione una opción:"));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }

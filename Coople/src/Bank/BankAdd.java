@@ -17,12 +17,7 @@ public class BankAdd {
         opc = -1;
             do{
                 try{
-                    opc = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                    \nTipo de cliente
-                                                    \n[1] Nómina
-                                                    \n[2] Débito
-                                                    \n[3] Crédito\n
-                                                                        """));
+                    opc = Integer.parseInt(JOptionPane.showInputDialog("\nTipo de cliente\n[1] Nómina\n[2] Débito\n[3] Crédito\n"));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
@@ -102,12 +97,7 @@ public class BankAdd {
         forCredit = -1;
             do{
                 try{
-                    forCredit = Integer.parseInt(JOptionPane.showInputDialog("""
-                                                                            \n\t CRÉDITOS
-                                                                            \n [1] CASA ($300,000, 36 meses, 12% interés)
-                                                                            \n [2] AUTOMOVILÍSTICO($100,000, 24 meses, 15% interés)
-                                                                            \n [3] ESTUDIANTIL($50,000, 12 meses, 10% interés)\n
-                                                                                """));
+                    forCredit = Integer.parseInt(JOptionPane.showInputDialog("\n\t CRÉDITOS\n [1] CASA ($300,000, 36 meses, 12% interés)\n [2] AUTOMOVILÍSTICO($100,000, 24 meses, 15% interés)\n [3] ESTUDIANTIL($50,000, 12 meses, 10% interés)\n"));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
                 }
@@ -233,19 +223,31 @@ public class BankAdd {
             String nipT = cusPay.getCard().getNip();
             String typeC = cusPay.getCard().getType();
 
-            String messageInfo = """
-                    \tCLIENTE INGRESADO EXITOSAMENTE
-                        \nNombre: """ + nameCom + """
-                        \nEdad: """ + cusPay.getAge() + """
-                        \nGénero: """ + cusPay.getGender() + """
-                        \nSalario: $""" + cusPay.getSalary() + """
-                        \nTipo de cliente: """ +  typeC + """
-                        \nNumero tarjeta: """ + nuCa + """
-                        \nNIP: """ + nipT + """
-                        \nSaldo de tarjeta: $""" + cusPay.getCard().getBalance() + """
-                        \nTipo de Crédito: """ + cusPay.getCredit().getTypeCred() + """
-                        \nMonto del Crédito: $""" + cusPay.getCredit().getAmount() + """
-                        \n""";
+            String messageInfo = String.format(
+                "\tCLIENTE INGRESADO EXITOSAMENTE\n" +
+                "Nombre: %s\n" +
+                "Edad: %d\n" +
+                "Género: %s\n" +
+                "Salario: $%.2f\n" +
+                "Tipo de cliente: %s\n" +
+                "Número tarjeta: %s\n" +
+                "NIP: %s\n" +
+                "Saldo de tarjeta: $%.2f\n" +
+                "Tipo de Crédito: %s\n" +
+                "Monto del Crédito: $%.2f\n",
+                nameCom,
+                cusPay.getAge(),
+                cusPay.getGender(),
+                cusPay.getSalary(),
+                typeC,
+                nuCa,
+                nipT,
+                cusPay.getCard().getBalance(),
+                cusPay.getCredit().getTypeCred(),
+                cusPay.getCredit().getAmount()
+            );
+            
+            
             
             //Mostrar informacion relevante del cliente despues de guardarlo
             JOptionPane.showMessageDialog(null, messageInfo);
@@ -336,19 +338,30 @@ public class BankAdd {
             String nipT = cusCre.getCard().getNip();
             String typeC = cusCre.getCard().getType();
 
-            String messageInfo = """
-                    \tCLIENTE INGRESADO EXITOSAMENTE
-                        \nNombre: """ + nameCom + """
-                        \nEdad: """ + cusCre.getAge() + """
-                        \nGénero: """ + cusCre.getGender() + """
-                        \nSalario: $""" + cusCre.getSalary() + """
-                        \nTipo de cliente: """ +  typeC + """
-                        \nNumero tarjeta: """ + nuCa + """
-                        \nNIP: """ + nipT + """
-                        \nSaldo de crédito tarjeta: $""" + cusCre.getCard().getCreditBalance() + """
-                        \nTipo de Crédito: """ + cusCre.getCredit().getTypeCred() + """
-                        \nMonto del Crédito: $""" + cusCre.getCredit().getAmount() + """
-                        \n""";
+            String messageInfo = String.format(
+                "\tCLIENTE INGRESADO EXITOSAMENTE\n" +
+                "Nombre: %s\n" +
+                "Edad: %d\n" +
+                "Género: %s\n" +
+                "Salario: $%.2f\n" +
+                "Tipo de cliente: %s\n" +
+                "Número tarjeta: %s\n" +
+                "NIP: %s\n" +
+                "Saldo de crédito tarjeta: $%.2f\n" +
+                "Tipo de Crédito: %s\n" +
+                "Monto del Crédito: $%.2f\n",
+                nameCom,
+                cusCre.getAge(),
+                cusCre.getGender(),
+                cusCre.getSalary(),
+                typeC,
+                nuCa,
+                nipT,
+                cusCre.getCard().getCreditBalance(),
+                cusCre.getCredit().getTypeCred(),
+                cusCre.getCredit().getAmount()
+            );
+            
             
             //Mostrar informacion relevante del cliente despues de guardarlo
             JOptionPane.showMessageDialog(null, messageInfo);
@@ -427,19 +440,30 @@ public class BankAdd {
             String nipT = cusDeb.getCard().getNip();
             String typeC = cusDeb.getCard().getType();
 
-            String messageInfo = """
-                    \tCLIENTE INGRESADO EXITOSAMENTE
-                        \nNombre: """ + nameCom + """
-                        \nEdad: """ + cusDeb.getAge() + """
-                        \nGénero: """ + cusDeb.getGender() + """
-                        \nSalario: $""" + cusDeb.getSalary() + """
-                        \nTipo de cliente: """ +  typeC + """
-                        \nNumero tarjeta: """ + nuCa + """
-                        \nNIP: """ + nipT + """
-                        \nSaldo de tarjeta: $""" + cusDeb.getCard().getBalance() + """
-                        \nTipo de Crédito: """ + cusDeb.getCredit().getTypeCred() + """
-                        \nMonto del Crédito: $""" + cusDeb.getCredit().getAmount() + """
-                        \n""";
+            String messageInfo = String.format(
+                "\tCLIENTE INGRESADO EXITOSAMENTE\n" +
+                "Nombre: %s\n" +
+                "Edad: %d\n" +
+                "Género: %s\n" +
+                "Salario: $%.2f\n" +
+                "Tipo de cliente: %s\n" +
+                "Número tarjeta: %s\n" +
+                "NIP: %s\n" +
+                "Saldo de tarjeta: $%.2f\n" +
+                "Tipo de Crédito: %s\n" +
+                "Monto del Crédito: $%.2f\n",
+                nameCom,
+                cusDeb.getAge(),
+                cusDeb.getGender(),
+                cusDeb.getSalary(),
+                typeC,
+                nuCa,
+                nipT,
+                cusDeb.getCard().getBalance(),
+                cusDeb.getCredit().getTypeCred(),
+                cusDeb.getCredit().getAmount()
+            );
+            
             
             //Mostrar informacion relevante del cliente despues de guardarlo
             JOptionPane.showMessageDialog(null, messageInfo);

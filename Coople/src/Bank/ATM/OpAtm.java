@@ -26,12 +26,12 @@ public class OpAtm {
         op = 0;
 
         try{
-            op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                    DEPÓSITO A:
-                                    Elige una opción:
-                                    [1] Cuenta propia
-                                    [2] Cuenta externa
-                                    """));
+            op = Integer.parseInt(JOptionPane.showInputDialog(
+    "DEPÓSITO A:\n" +
+    "Elige una opción:\n" +
+    "[1] Cuenta propia\n" +
+    "[2] Cuenta externa"));
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
         }
@@ -54,7 +54,7 @@ public class OpAtm {
 
     // Método para depositar dinero en la cuenta del cliente
     public static void depositMoney(CustomerCredit cus) {
-        double moneyDe;
+        double moneyDe, balance;
         String cta;
         int op;
 
@@ -76,18 +76,18 @@ public class OpAtm {
         } while (op < 1 || op > 2);
 
         switch (op) {
-            case 1 -> {
-                double balance = cus.getCard().getCreditBalance();
+            case 1:
+                balance = cus.getCard().getCreditBalance();
                 balance += moneyDe;
                 cus.getCard().setCreditBalance(balance);
                 JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperación realizada en:" + Date());
-            }
-            case 2 -> {
+            break;
+            case 2:
                 do {
                     cta = JOptionPane.showInputDialog("Ingresa la cuenta a la que depositarás: ");
                 } while (cta == null || !cta.matches("\\d{16}")); // Verificar formato de cuenta (16 dígitos numéricos)
 
-                double balance = cus.getCard().getCreditBalance();
+                balance = cus.getCard().getCreditBalance();
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
@@ -96,11 +96,11 @@ public class OpAtm {
                     cus.getCard().setCreditBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getCreditBalance());
                 }
-            }
+            break;
         }
     }
     public static void depositMoney(CustomerPayroll cus) {
-        double moneyDe;
+        double moneyDe, balance;
         String cta;
         int op;
 
@@ -122,18 +122,18 @@ public class OpAtm {
         } while (op < 1 || op > 2);
 
         switch (op) {
-            case 1 -> {
-                double balance = cus.getCard().getBalance();
+            case 1:
+                balance = cus.getCard().getBalance();
                 balance += moneyDe;
                 cus.getCard().setBalance(balance);
                 JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperación realizada en:" + Date());
-            }
-            case 2 -> {
+            break;
+            case 2:
                 do {
                     cta = JOptionPane.showInputDialog("Ingresa la cuenta a la que depositarás: ");
                 } while (cta == null || !cta.matches("\\d{16}")); // Verificar formato de cuenta (16 dígitos numéricos)
 
-                double balance = cus.getCard().getBalance();
+                balance = cus.getCard().getBalance();
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
@@ -142,11 +142,11 @@ public class OpAtm {
                     cus.getCard().setBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
                 }
-            }
+            break;
         }
     }
     public static void depositMoney(CustomerDebit cus) {
-        double moneyDe;
+        double moneyDe, balance;
         String cta;
         int op;
 
@@ -168,18 +168,18 @@ public class OpAtm {
         } while (op < 1 || op > 2);
 
         switch (op) {
-            case 1 -> {
-                double balance = cus.getCard().getBalance();
+            case 1:
+                balance = cus.getCard().getBalance();
                 balance += moneyDe;
                 cus.getCard().setBalance(balance);
                 JOptionPane.showMessageDialog(null, "Depósito correcto de $" + moneyDe + "\nA cuenta propia" + "\n\nOperación realizada en:" + Date());
-            }
-            case 2 -> {
+            break;
+            case 2:
                 do {
                     cta = JOptionPane.showInputDialog("Ingresa la cuenta a la que depositarás: ");
                 } while (cta == null || !cta.matches("\\d{16}")); // Verificar formato de cuenta (16 dígitos numéricos)
 
-                double balance = cus.getCard().getBalance();
+                balance = cus.getCard().getBalance();
                 if (moneyDe > balance) {
                     JOptionPane.showMessageDialog(null, "Saldo insuficiente para realizar la acción");
                 } else {
@@ -188,7 +188,7 @@ public class OpAtm {
                     cus.getCard().setBalance(balance);
                     JOptionPane.showMessageDialog(null, "Tu saldo actual es: \n$" + cus.getCard().getBalance());
                 }
-            }
+            break;
         }
     }
 

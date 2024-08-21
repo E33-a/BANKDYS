@@ -8,9 +8,10 @@ public class ListFinal {
     public static DoubleListCr ListC = new DoubleListCr();
     public static DoubleListDe ListD = new DoubleListDe();
 
-    private final static String pathPay = "./Coople/FilesC/CustomersPayroll.txt";
-    private final static String pathDeb = "./Coople/FilesC/CustomersDebit.txt";
-    private final static String pathCre = "./Coople/FilesC/CustomersCredit.txt";
+    private final static String pathPay = ".\\BANKDYS\\Coople\\FilesC\\CustomersPayroll.txt";
+    private final static String pathDeb = ".\\BANKDYS\\Coople\\FilesC\\CustomersDebit.txt";
+    private final static String pathCre = ".\\BANKDYS\\Coople\\FilesC\\CustomersCredit.txt";
+    
 
     //Metodo para leer los archivos del txt y almacenarlos en las listas finales de cada tipo de cliente
     public static void inData(){
