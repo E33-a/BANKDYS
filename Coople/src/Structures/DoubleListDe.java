@@ -1,12 +1,12 @@
 package Structures;
 
-import Bank.Customer.CustomerCredit;
+import Bank.Customer.CustomerDebit;
 
-public class DoubleListCr {
-    private NodeCr head; // Primer nodo
-    private NodeCr tail; // Último nodo
+public class DoubleListDe {
+    private NodeDe head; // Primer nodo
+    private NodeDe tail; // Último nodo
 
-    public DoubleListCr() { // Constructor de lista vacía
+    public DoubleListDe() { // Constructor de lista vacía
         this.head = null;
         this.tail = null;
     }
@@ -15,41 +15,41 @@ public class DoubleListCr {
         return head == null; // Comprobación en return
     }
 
-    public NodeCr getHead() {
+    public NodeDe getHead() {
         return head;
     }
 
-    public NodeCr getTail() {
+    public NodeDe getTail() {
         return tail;
     }
 
-    public void insertBeginning(CustomerCredit cus) {
-        NodeCr newNode = new NodeCr(cus);
+    public void insertBeginning(CustomerDebit cus) {
+        NodeDe newNodeDe = new NodeDe(cus);
         if (isEmpty()) {
-            head = newNode;
-            tail = newNode;
+            head = newNodeDe;
+            tail = newNodeDe;
         } else {
-            newNode.next = head;
-            head.prev = newNode;
-            head = newNode;
+            newNodeDe.next = head;
+            head.prev = newNodeDe;
+            head = newNodeDe;
         }
     }
 
-    public void insertEnd(CustomerCredit cus) {
-        NodeCr newNode = new NodeCr(cus);
+    public void insertEnd(CustomerDebit cus) {
+        NodeDe newNodeDe = new NodeDe(cus);
         if (isEmpty()) {
-            head = newNode;
-            tail = newNode;
+            head = newNodeDe;
+            tail = newNodeDe;
         } else {
-            tail.next = newNode;
-            newNode.prev = tail;
-            tail = newNode;
+            tail.next = newNodeDe;
+            newNodeDe.prev = tail;
+            tail = newNodeDe;
         }
     }
 
     // Elimina un nodo dependiendo del número de tarjeta
-    public NodeCr deleteNodeCreValue(String cardNumber) {
-        NodeCr current = head;
+    public NodeDe deleteNodeDeValue(String cardNumber) {
+        NodeDe current = head;
 
         while (current != null) {
             if (cardNumber.equals(current.cus.getCard().getNumber())) {
@@ -84,9 +84,9 @@ public class DoubleListCr {
             System.out.println("\nLista vacía");
             return; // Si la lista está vacía, finalizamos el método
         }
-        NodeCr current = head;
+        NodeDe current = head;
         while (current != null) {
-            current.cus.showCCre();
+            current.cus.showCDeb();
             System.out.println("--------------------------");
             current = current.next;
         }
@@ -98,9 +98,9 @@ public class DoubleListCr {
             System.out.println("\nLista vacía");
             return; // Si la lista está vacía, finalizamos el método
         }
-        NodeCr current = tail;
+        NodeDe current = tail;
         while (current != null) {
-            current.cus.showCCre();
+            current.cus.showCDeb();
             System.out.println("-----------------------------------");
             current = current.prev;
         }
@@ -112,11 +112,11 @@ public class DoubleListCr {
             System.out.println("\nLista vacía");
             return; // Si la lista está vacía, finalizamos el método
         }
-        NodeCr current = head;
+        NodeDe current = head;
         while (current != null) {
             if (number.equals(current.cus.getCard().getNumber())) {
                 System.out.println("CLIENTE ENCONTRADO\n");
-                current.cus.showCCre();
+                current.cus.showCDeb();
                 System.out.println("-----------------------------------");
                 return;
             }
@@ -132,7 +132,7 @@ public class DoubleListCr {
             return false; // Si la lista está vacía, finalizamos el método
         }
 
-        NodeCr current = head;
+        NodeDe current = head;
 
         while (current != null) {
             if (number.equals(current.cus.getCard().getNumber())) {
@@ -145,11 +145,11 @@ public class DoubleListCr {
     }
 
     // Método para particionar la lista para Quick Sort
-    private NodeCr partition(NodeCr min, NodeCr may) {
+    private NodeDe partition(NodeDe min, NodeDe may) {
         String pivot = may.cus.getCard().getNumber(); // Selecciona el número de tarjeta del nodo final como pivote
-        NodeCr i = min.prev; // Puntero para el nodo más pequeño
+        NodeDe i = min.prev; // Puntero para el nodo más pequeño
 
-        for (NodeCr j = min; j != may; j = j.next) {
+        for (NodeDe j = min; j != may; j = j.next) {
             // Si el número de tarjeta del nodo actual es menor o igual que el pivote
             if (j.cus.getCard().getNumber().compareTo(pivot) <= 0) {
                 i = (i == null) ? min : i.next; // Incrementa el puntero de i
@@ -162,16 +162,16 @@ public class DoubleListCr {
     }
 
     // Método para intercambiar los datos de dos nodos
-    private void swapNodes(NodeCr a, NodeCr b) {
-        CustomerCredit temp = a.cus;
+    private void swapNodes(NodeDe a, NodeDe b) {
+        CustomerDebit temp = a.cus;
         a.cus = b.cus;
         b.cus = temp;
     }
 
     // Método recursivo para aplicar Quick Sort
-    private void quickSort(NodeCr min, NodeCr may) {
+    private void quickSort(NodeDe min, NodeDe may) {
         if (may != null && min != may && min != may.next) {
-            NodeCr pivot = partition(min, may); // Particiona la lista
+            NodeDe pivot = partition(min, may); // Particiona la lista
             quickSort(min, pivot.prev); // Ordena la sublista izquierda
             quickSort(pivot.next, may); // Ordena la sublista derecha
         }
@@ -180,5 +180,22 @@ public class DoubleListCr {
     // Método público para iniciar el Quick Sort
     public void sort() {
         quickSort(head, tail);
+    }
+
+    public void readOtherList(DoubleListDe list) {
+        NodeDe current = list.head;
+        if (current == null) {
+            System.out.println("La lista a copiar está vacía.");
+            return;
+        }
+    
+        int count = 0;
+        while (current != null) {
+            CustomerDebit ncus = current.cus;
+            insertEnd(ncus);
+            current = current.next;
+            count++;
+        }
+        System.out.println("Se han copiado " + count + " clientes a la lista de débito final.");
     }
 }

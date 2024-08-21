@@ -8,7 +8,7 @@ import Bank.ListFInal.ListFinal;
 
 public class BANKDYS {
     public static void main(String[] args) {
-
+        ListFinal.inData();
         String numberT;
         double moneyAtm = 0;
 
@@ -19,15 +19,15 @@ public class BANKDYS {
                 try {
                     option = Integer.parseInt(JOptionPane.showInputDialog("""
                                                         \n\t MENÚ
-                                                        \n [1]  Añadir cliente
-                                                        \n [2]  Buscar cliente (No. tarjeta)
-                                                        \n [3]  Mostrar información de clientes
-                                                        \n [4]  Eliminar cliente (No. tarjeta)
-                                                        \n [5]  Editar información de cliente
-                                                        \n [6]  Asignar dinero al ATM
-                                                        \n [7]  ATM - Operaciones
-                                                        \n [8]  Ordenar listas
-                                                        \n [0]  Salir
+                                                        \n  [1]  Añadir cliente
+                                                        \n  [2]  Buscar cliente
+                                                        \n  [3]  Mostrar información
+                                                        \n  [4]  Eliminar cliente
+                                                        \n  [5]  Editar información
+                                                        \n  [6]  Asignar dinero al ATM
+                                                        \n  [7]  ATM - Operaciones
+                                                        \n  [8]  Ordenar listas
+                                                        \n  [0]  Salir
                                                         \n\n\tSeleccione una opción:
                                                         """));
                 } catch (NumberFormatException e) {
@@ -100,6 +100,7 @@ public class BANKDYS {
                         break;
 
                     case 0:
+                        ListFinal.saveAllData();
                         System.out.println("\nSaliendo...");
                         break;
 

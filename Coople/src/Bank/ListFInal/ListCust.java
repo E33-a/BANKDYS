@@ -1,4 +1,5 @@
-package Bank;
+package Bank.ListFInal;
+
 import java.io.BufferedReader;
 //import java.io.BufferedWriter;
 import java.io.File;
@@ -23,13 +24,13 @@ import Structures.NodeDe;
 import Structures.NodePay;
 
 public class ListCust implements Files{
-    public static DoubleListPay listPayroll = new DoubleListPay();
+    public static DoubleListPay TemplistPayroll = new DoubleListPay();
     //public DoubleListPay listPayrollTemp = new DoubleListPay();//lista para escribir en txt
 
-    public static DoubleListDe listDebit = new DoubleListDe();
+    public static DoubleListDe TemplistDebit = new DoubleListDe();
     //public DoubleListDe listDebitTemp = new DoubleListDe();//lista para escribir en txt
 
-    public static DoubleListCr listCredit = new DoubleListCr();
+    public static DoubleListCr TemplistCredit = new DoubleListCr();
     //public DoubleListCr listCreditTemp = new DoubleListCr();//lista para escribir en txt
 
     
@@ -59,7 +60,7 @@ public class ListCust implements Files{
                 
                 CardPayroll CardP = new CardPayroll(number, nip, type, balance);
                 CreditC CredC = new CreditC(amount, interest, fees, typeCred);
-                listPayroll.insertBeginning(new CustomerPayroll(name, surname1, surname2, age, gender, salary, CredC, CardP));
+                TemplistPayroll.insertBeginning(new CustomerPayroll(name, surname1, surname2, age, gender, salary, CredC, CardP));
             }
 
             in.close();
@@ -98,7 +99,7 @@ public class ListCust implements Files{
                 
                 CardDebit CardD = new CardDebit(number, nip, type, balance, discount);
                 CreditC CredC = new CreditC(amount, interest, fees, typeCred);
-                listDebit.insertBeginning(new CustomerDebit(name, surname1, surname2, age, gender, salary, CredC, CardD));
+                TemplistDebit.insertBeginning(new CustomerDebit(name, surname1, surname2, age, gender, salary, CredC, CardD));
             }
 
             in.close();
@@ -138,7 +139,7 @@ public class ListCust implements Files{
                 
                 CardCredit CardC = new CardCredit(number, nip, type, creditBalance, cardInterest, discount);
                 CreditC CredC = new CreditC(amount, interest, fees, typeCred);
-                listCredit.insertBeginning(new CustomerCredit(name, surname1, surname2, age, gender, salary, CredC, CardC));
+                TemplistCredit.insertBeginning(new CustomerCredit(name, surname1, surname2, age, gender, salary, CredC, CardC));
             }
 
             in.close();
@@ -159,7 +160,7 @@ public class ListCust implements Files{
             //BuefferedWriter no sirvio ya que no saltaba la linea
             //BufferedWriter addLine = new BufferedWriter(new FileWriter(file, true));
             NodePay current = Temp.getHead();//Obtenemos el primer elemento de la lista
-            PrintWriter out = new PrintWriter(new FileWriter(file, true));
+            PrintWriter out = new PrintWriter(new FileWriter(file, false));
     
             //System.out.println("\nFile escrito");
 
@@ -177,7 +178,7 @@ public class ListCust implements Files{
                         current.cus.getGender() + "," + current.cus.getSalary() + "," +
                         current.cus.getCard().getNumber() + "," + current.cus.getCard().getNip() + "," +
                         current.cus.getCard().getType() + "," + current.cus.getCard().getBalance() + "," +
-                        current.cus.getCredit().getAmount() + "," + 
+                        current.cus.getCredit().getAmount() + "," + current.cus.getCredit().getInterest() + "," +
                         current.cus.getCredit().getFees() + "," + current.cus.getCredit().getTypeCred());
 
                         current = current.next;
@@ -197,7 +198,7 @@ public class ListCust implements Files{
         File file = new File(path);
         try {
             NodeCr current = Temp.getHead();//Obtenemos el primer elemento de la lista
-            PrintWriter out = new PrintWriter(new FileWriter(file, true));
+            PrintWriter out = new PrintWriter(new FileWriter(file, false));
 
                 while (current != null){
                     out.println(current.cus.getName() + "," + current.cus.getSurname1() + "," +
@@ -225,7 +226,7 @@ public class ListCust implements Files{
         
         try {
             NodeDe current = Temp.getHead();//Obtenemos el primer elemento de la lista
-            PrintWriter out = new PrintWriter(new FileWriter(file, true));
+            PrintWriter out = new PrintWriter(new FileWriter(file, false));
     
                 while (current != null){
                     out.println(

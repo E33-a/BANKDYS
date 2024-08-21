@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
+import Bank.Customer.Customer;
 import Bank.Customer.CustomerCredit;
 import Bank.Customer.CustomerDebit;
 import Bank.Customer.CustomerPayroll;
@@ -19,6 +20,22 @@ public class OpAtm {
         String time = fechaHoy.format(formatTime);
         String date = "\nFecha: " + fecha + "\nHora: " + time;
         return date;
+    }
+    private static int Op(){
+        int op;
+        op = 0;
+
+        try{
+            op = Integer.parseInt(JOptionPane.showInputDialog("""
+                                    DEPÓSITO A:
+                                    Elige una opción:
+                                    [1] Cuenta propia
+                                    [2] Cuenta externa
+                                    """));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
+        }
+        return op;
     }
         
     // Método para consultar el saldo del cliente // son sobrecargados dependiendo del tipo de cliente y tarjeta
@@ -54,22 +71,8 @@ public class OpAtm {
             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
-        op = 0;
         do {
-            try{
-                op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                        DEPÓ
-                                        
-                                        
-                                        
-                                        SITO A:
-                                        Elige una opción:
-                                        [1] Cuenta propia
-                                        [2] Cuenta externa
-                                        """));
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
-            }
+            op = Op();
         } while (op < 1 || op > 2);
 
         switch (op) {
@@ -114,18 +117,8 @@ public class OpAtm {
             }
         } while (moneyDe < 100 || moneyDe > 5000);
 
-        op = 0;
         do {
-            try{
-                op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                        DEPÓSITO A:
-                                        Elige una opción:
-                                        [1] Cuenta propia
-                                        [2] Cuenta externa
-                                        """));
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
-            }
+           op = Op();
         } while (op < 1 || op > 2);
 
         switch (op) {
@@ -170,18 +163,8 @@ public class OpAtm {
              }
         } while (moneyDe < 100 || moneyDe > 5000);
 
-        op = 0;
         do {
-            try{
-                op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                        DEPÓSITO A:
-                                        Elige una opción:
-                                        [1] Cuenta propia
-                                        [2] Cuenta externa
-                                        """));
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error: Ingresa un valor numérico válido.");
-            }
+            op = Op();
         } while (op < 1 || op > 2);
 
         switch (op) {
@@ -356,84 +339,52 @@ public class OpAtm {
 
     }
 
-    public static void changeNIP(CustomerPayroll cus) {
+    public static void changeNIP(Customer cus) {
         String newNIP, confirmNIP, nameCom;
         nameCom = cus.getName() + " " + cus.getSurname1() + " " + cus.getSurname2();
-
-        do {
-            newNIP = JOptionPane.showInputDialog("CAMBIAR  NIP\n\nHola " + nameCom + "\nIngresa el nuevo nip:\n");
-            newNIP = newNIP.substring(0, 4);//Almacenar solo 4 caracteres
-            if (newNIP != null && newNIP.length() == 4 && newNIP.matches("\\d{4}")) {
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
-            }
-        } while (true);
-        do {
-            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
-            confirmNIP = confirmNIP.substring(0, 4);
-
-            if (newNIP.equals(confirmNIP)) {
-                cus.getCard().setNip(confirmNIP);
-                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
-            }
-        } while (!newNIP.equals(confirmNIP));
-    }
-
-    public static void changeNIP(CustomerDebit cus) {
-        String newNIP, confirmNIP, nameCom;
-        nameCom = cus.getName() + " " + cus.getSurname1() + " " + cus.getSurname2();
-
-        do {
-            newNIP = JOptionPane.showInputDialog("CAMBIAR  NIP\n\nHola " + nameCom + "\nIngresa el nuevo nip:\n");
-            newNIP = newNIP.substring(0, 4);//Almacenar solo 4 caracteres
-            if (newNIP != null && newNIP.length() == 4 && newNIP.matches("\\d{4}")) {
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
-            }
-        } while (true);
-        do {
-            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
-            confirmNIP = confirmNIP.substring(0, 4);
-
-            if (newNIP.equals(confirmNIP)) {
-                cus.getCard().setNip(confirmNIP);
-                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
-            }
-        } while (!newNIP.equals(confirmNIP));
-    }
-
-    public static void changeNIP(CustomerCredit cus) {
-        String newNIP, confirmNIP, nameCom;
-        nameCom = cus.getName() + " " + cus.getSurname1() + " " + cus.getSurname2();
-
-        do {
-            newNIP = JOptionPane.showInputDialog("CAMBIAR  NIP\n\nHola " + nameCom + "\nIngresa el nuevo nip:\n");
-            newNIP = newNIP.substring(0, 4);//Almacenar solo 4 caracteres
-            if (newNIP != null && newNIP.length() == 4 && newNIP.matches("\\d{4}")) {
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
-            }
-        } while (true);
-        do {
-            confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
-            confirmNIP = confirmNIP.substring(0, 4);
-
-            if (newNIP.equals(confirmNIP)) {
-                cus.getCard().setNip(confirmNIP);
-                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
-            }
-        } while (!newNIP.equals(confirmNIP));
+        try{
+            // Primer bucle: pedir el nuevo NIP
+            do {
+                newNIP = JOptionPane.showInputDialog("CAMBIAR NIP\n\nHola " + nameCom + "\nIngresa el nuevo NIP:\n");
+                if (newNIP == null) {
+                    JOptionPane.showMessageDialog(null, "Operación cancelada.");
+                    return; // Salir si se cancela
+                }
+                if (newNIP.length() >= 4) {
+                    newNIP = newNIP.substring(0, 4); // Almacenar solo los primeros 4 caracteres
+                }
+                if (newNIP.matches("\\d{4}")) {
+                    break; // Salir del bucle si el NIP es válido
+                } else {
+                    JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
+                }
+            } while (true);
+        
+            // Segundo bucle: confirmar el nuevo NIP
+            do {
+                confirmNIP = JOptionPane.showInputDialog("CONFIRMAR NUEVO NIP\n\nNuevo NIP:\n");
+                if (confirmNIP == null) {
+                    JOptionPane.showMessageDialog(null, "Operación cancelada.");
+                    return; // Salir si se cancela
+                }
+                if (confirmNIP.length() >= 4) {
+                    confirmNIP = confirmNIP.substring(0, 4); // Almacenar solo los primeros 4 caracteres
+                }
+                if (!confirmNIP.matches("\\d{4}")) {
+                    JOptionPane.showMessageDialog(null, "El NIP debe ser numérico y tener exactamente 4 dígitos.");
+                    continue; // Repetir si el NIP no es válido
+                }
+        
+                if (newNIP.equals(confirmNIP)) {
+                    cus.getCard().setNip(confirmNIP);
+                    JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nExitoso");
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "CAMBIO DE NIP\n\nIncorrecto\nIngresa correctamente el nuevo NIP\n");
+                }
+            } while (!newNIP.equals(confirmNIP));
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Error al capturar el nuevo NIP");
+        }
     }
 }

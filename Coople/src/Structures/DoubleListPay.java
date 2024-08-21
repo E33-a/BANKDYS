@@ -192,4 +192,22 @@ public class DoubleListPay {
     public void sort() {
         quickSort(head, tail);
     }
+
+    public void readOtherList(DoubleListPay list) {
+        NodePay current = list.head;
+        if (current == null) {
+            System.out.println("La lista a copiar está vacía.");
+            return;
+        }
+    
+        int count = 0;
+        while (current != null) {
+            CustomerPayroll ncus = current.cus;
+            insertEnd(ncus);
+            current = current.next;
+            count++;
+        }
+        System.out.println("Se han copiado " + count + " clientes a la lista de nómina final.");
+    }
+    
 }
