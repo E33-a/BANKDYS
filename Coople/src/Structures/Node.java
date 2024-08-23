@@ -5,8 +5,8 @@ import Bank.Customer.Customer;
 // Este es un nodo general del que derivan los demas
 public class Node {
     public Customer cus;
-    public NodeCr next; //ref a nodo siguiente
-    public NodeCr prev; //ref a nodo anterior
+    public Node next; //ref a nodo siguiente
+    public Node prev; //ref a nodo anterior
 
     //constructor
     Node(Customer cus){

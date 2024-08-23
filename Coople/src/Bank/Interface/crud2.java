@@ -26,7 +26,7 @@ public class crud2 implements crudInter{
         }
         logShowDel.showFound(numberT); // Buscar e imprimir datos
     }
-    public static void update(String numberT){
+    public static void update( String numberT){
         try { // Editar información (update)
             do {
                 numberT = JOptionPane.showInputDialog("BUSCAR CUENTA\nIngresa el número de tarjeta: ");

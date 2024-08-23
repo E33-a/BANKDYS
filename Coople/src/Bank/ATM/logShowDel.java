@@ -41,6 +41,7 @@ public class logShowDel {
         } else {
             JOptionPane.showMessageDialog(null, "CLIENTE NO ENCONTRADO\nInténtalo nuevamente");
         }
+
     }
 
     public static void showEveryone() {
