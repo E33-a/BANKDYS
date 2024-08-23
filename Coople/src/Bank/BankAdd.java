@@ -114,7 +114,7 @@ public class BankAdd {
                     amount = 100000;
                     interest = 0.15;
                     fees = 26;
-                    typeCred = "AUTOMOVILÍSTICO";
+                    typeCred = "AUTOMOVILISTICO";
                     break;
                 case 3:
                     amount = 50000;
